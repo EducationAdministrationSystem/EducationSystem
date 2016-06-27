@@ -1,0 +1,187 @@
+{% extends "teacher/base/none_nav_base.html"%}
+{% block inner_content%}
+<link rel="stylesheet" href="{{ STATIC_URL  }}bootstrap-datepicker/css/bootstrap-datetimepicker.css" type="text/css" media="screen" />
+
+
+    <div class="container-fluid nopadding">
+        <div class="row nomargin">
+            <div class="col-lg-12 nopadding">
+               <a  class="navbar-button navbar-button-left navbar-button-right"></a> 
+            </div>
+        </div>
+    </div>
+
+    <p> </p>
+
+
+
+{%if course_list%}
+    <div id="homework_page">
+
+        <ul class="nav nav-pills" role="tablist">
+        {%for course in course_list%}
+            <li role="presentation"
+                {%if forloop.counter == 1%}class="active" {%endif%}>
+
+                <a href="#{{course.id}}" role = "tab" data-toggle="tab" > 
+                    {{course.name}}
+                </a>
+            </li>    
+        {%endfor%}
+        </ul>
+
+
+
+
+        <div class="tab-content well">
+          {%for course in course_list%}
+              <div role="tabpanel" 
+                  {%if forloop.counter == 1%}
+                      class="tab-pane fade in active" 
+                  {%else%}
+                      class="tab-pane fade" 
+                  {%endif%}
+                  id="{{course.id}}"
+                  cid = "{{course.id}}">
+
+
+                  <button type="button" class="btn btn-primary addHomework" data-toggle="modal" 
+                  data-target="#homework_modal">增加作业</button>
+                  <p> </p>
+
+                  <div>
+                      {%include "teacher/widgets/homework_table.html"%}
+                  </div>
+              </div>
+          {%endfor%}
+        </div>
+
+    </div>
+{%else%}
+    <h3>本学期您还没有课程呀！ </h3>
+{%endif%}
+
+
+
+
+<div id = "homework_submit_page" style="display:none">
+   
+    <button type="button" class="btn btn-info " id="return">
+        <span class=" glyphicon glyphicon-arrow-left" ></span>
+        返回
+    </button>
+
+    <p> </p>
+    
+    <div> </div>
+    
+</div>
+
+
+
+
+
+
+
+
+<div class="modal fade" id="required_modal" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">查看作业要求</h3>
+      </div>
+
+      <div class="modal-body">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" >保存</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="score_modal" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">评分</h3>
+      </div>
+
+      <div class="modal-body">
+
+        <div class="alert alert-danger" role="alert"
+             style= "display:none">
+        </div>
+
+        <form class = "well">
+            <input class = "form-control" name="score"type="text" style="width:170px" />
+        </form>
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        <button type="button" class="btn btn-primary saveScore" >保存</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{%include "widgets/homework_model.html"%}
+
+<!-- <div class="modal fade" id="homework_modal" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title"></h3>
+      </div>
+
+      <div class="modal-body">
+
+        <div class="alert alert-danger" role="alert" style= "display:none"> </div>
+        <form class = "well">
+            {% for field in homework_form %}
+                <div class="fieldWrapper">
+                    {{ field.label_tag }}: {{ field }}
+                </div>
+            {% endfor %}
+        </form>
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        <button type="button" class="btn btn-primary saveHomework" >保存</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+ -->
+
+
+
+<script type='text/javascript' src="{{STATIC_URL}}bootstrap-datepicker/js/bootstrap-datetimepicker.js"></script>
+
+
+<script type='text/javascript' src="/static/js/teacher/homeworkManagement.js"></script>
+
+{% endblock%}

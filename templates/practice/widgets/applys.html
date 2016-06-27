@@ -1,0 +1,33 @@
+<h3>本学期共用{{number}}个同学报名了本实践班，其中第一志愿有{{first_number}}个。</h3>
+<button id="export_btn" class="btn btn-primary">导出名单xls</button>
+<button id="entry_modal_btn" data-toggle="modal" href="#entry_modal" class="btn btn-primary">批量录入</button>
+<table class="table table-bordered table-hover">
+    <thead>
+        <th><input type="checkbox" id="select_all"></input></th>
+        <th>姓名</th>
+        <th>学号</th>
+        <th>性别</th>
+        <th>邮箱</th>
+        <th>电话</th>
+        <th>是否为第一志愿</th>
+        <th>是否已录入</th>
+    </thead>
+    <tbody>
+        {% for apply in item_list %}
+        <tr>
+        <td><input type="checkbox" name="check_entry" args="{{apply.student_id}}"></input></td>
+        <td>{{apply.student_name}}</td>
+        <td>{{apply.student_id}}</td>
+        <td>{{apply.get_sex_display}}</td>
+        <td>{{apply.email}}</td>
+        <td>{{apply.tel_num}}</td>
+        <td>{{apply.is_first_wish}}</td>
+        <td>{{apply.small_class}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<div id="paginator">
+    {% include "widgets/paginator.html" %}
+</div>

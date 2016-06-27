@@ -1,0 +1,27 @@
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>课程id</th>
+            <th>课程名</th>
+            <th>年级</th>
+            <th>学期</th>
+            <th>学分</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    {% for item in course_plan_list%}
+    <tr iid="{{item.id}}">
+        <td>{{item.course_plan_id}}</td>
+        <td>{{item.course_name}}</td>
+        <td>{{item.course_grade}}</td>
+        <td>{{item.get_course_term_display}}</td>
+        <td>{{item.course_point}}</td>
+        <td>
+            <div class="btn-group">
+                <button class="btn btn-primary" data-toggle="modal" data-target="#course_plan_modal" id="change_course_plan">修改</button>
+                <button class="btn btn-danger" data-toggle="modal" data-target="#courseplan_delete_modal" id="change_course_plan">删除</button>
+            </div>
+        </td>
+    </tr>
+    {% endfor%}
+</table>

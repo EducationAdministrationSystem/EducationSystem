@@ -1,0 +1,20 @@
+<table id="teacher-list-table" class="table table-bordered table-striped">
+	<tr class="row">
+		<th class="col-lg-3">教师姓名</th>
+		<th class="col-lg-3">教工号</th>
+		<th class="col-lg-3">班级</th>
+		<th class="col-lg-3">功能</th>
+	</tr>
+	{% for teacher in teacherlist %}
+		<tr class="row" iid={{teacher.teacher_id}}>
+			<td class="col-lg-3">{{teacher.teacher_name}}</td>
+			<td class="col-lg-3">{{teacher.teacher_id}}</td>
+			<td class="col-lg-3">{{teacher.small_class}}</td>
+			<td class="col-lg-3">
+				<button type="button" class="btn btn-primary" id="edit_Button" data-toggle="modal" data-target="#edit-Modal">修改</button>
+				<button type="button" class="btn btn-primary" id="delete_Button">删除</button>
+				<button type="button" class="btn btn-primary" id="detail_Button" data-toggle="modal" data-target="#detail-Modal">详细信息</button>
+			</td>
+		</tr>
+	{% endfor %}
+</table>

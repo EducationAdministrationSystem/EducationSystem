@@ -1,0 +1,44 @@
+<table class="table table-bordered table-hover">
+    <thead>
+        <th>学生姓名</th>
+        <th>学号</th>
+        <th>考勤</th>
+        <th>作业</th>
+        <th>期末</th>
+        <th>总分</th>
+    </thead>
+    {% if not course.is_finished %}
+    <tbody>
+    {% for select in selects %}
+        <tr args="{{select.id}}">
+            <td>{{select.student.baseinfo_name}}</td>
+            <td>{{select.student.baseinfo_studentid}}</td>
+            <td>{{select.score.attendance}}</td>
+            <td>{{select.score.homework}}</td>
+            <td>{{select.score.final}}</td>
+            <td><input type="text" style="width: 60px" value="{{select.score.total}}" name="total_input"></input></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    {% else %}
+    <tbody>
+    {% for select in selects %}
+        <tr args="{{select.id}}">
+            <td>{{select.student.baseinfo_name}}</td>
+            <td>{{select.student.baseinfo_studentid}}</td>
+            <td>{{select.score.attendance}}</td>
+            <td>{{select.score.homework}}</td>
+            <td>{{select.score.final}}</td>
+            <td>{{select.score.total}}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    {% endif %}
+</table>
+{% if not course.is_finished %}
+<button class="btn btn-primary submit_btn" args="{{course.id}}">公布</button>
+{% else %}
+<button class="btn">已公布</button>
+{% endif %}
+
+

@@ -1,0 +1,30 @@
+<div class="modal fade" id="homework_modal" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title"></h3>
+      </div>
+
+      <div class="modal-body">
+
+        <div class="alert alert-danger" role="alert" style= "display:none"> </div>
+        <form class = "well">
+            {% for field in homework_form %}
+                <div class="fieldWrapper">
+                    {{ field.label_tag }}: {{ field }}
+                </div>
+            {% endfor %}
+
+            
+        </form>
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        <button type="button" class="btn btn-primary saveHomework" >保存</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<div id="btn_div">
+    <button class="btn btn-primary" id="scores_export_btn_simple" args="{{course_id}}">导出成绩xls(计算用)</button>
+    <button class="btn btn-primary" id="scores_export_btn" args="{{course_id}}">导出成绩xls(打印用)</button>
+
+</div>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <th>学号</th>
+        <th>姓名</th>
+        <th>考勤分数</th>
+        <th>平时作业</th>
+        <th>期末评测</th>
+        <th>总分</th>
+    </thead>
+    <tbody>
+        {% for select in item2_list %}
+        <tr>
+            <td>{{select.student.baseinfo_studentid}}</td>
+            <td>{{select.student.baseinfo_name}}</td>
+            <td>{{select.score.attendance}}</td>
+            <td>{{select.score.homework}}</td>
+            <td>{{select.score.final}}</td>
+            <td>{{select.score.total}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<div id="paginator2">
+{% include "widgets/paginator2.html" %}
+</div>

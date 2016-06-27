@@ -1,0 +1,219 @@
+{% extends "student/base/none_nav_base.html"%}
+{% block inner_content%}
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="{{ STATIC_URL  }}bootstrap-datepicker/css/bootstrap-datetimepicker.css" type="text/css" media="screen" />
+
+
+<div class="container-fluid nopadding">
+    <div class="row nomargin">
+        <div class="col-lg-12 nopadding">
+           <a  class="navbar-button navbar-button-left navbar-button-right"></a> 
+        </div>
+    </div>
+</div>
+
+
+<div class="alert alert-warning" role="alert"> 注意：上传的作业文件大小不要超过10MB！上传作业文件将会覆盖已上传的作业文件！</div>
+
+{%if file_upload_error == 2%}
+<div class="alert alert-danger" role="alert"> <h4>警告：上传的作业文件大小超过1MB,作业文件上传不成功！</h4>   </div>
+{%elif file_upload_error == 1%}
+<div class="alert alert-success" role="alert"> <h4>作业上传成功！</h4>   </div>
+{%endif%}
+
+
+
+
+
+
+
+{%if course_list%}
+    
+
+    <ul class="nav nav-pills" role="tablist">
+    {%for course in course_list%}
+        <li role="presentation"
+            {%ifequal forloop.counter course_counter %}class="active" {%endifequal%}>
+
+            <a href="#{{course.id}}" role = "tab" data-toggle="tab" > 
+                {{course.name}}
+            </a>
+        </li>    
+    {%endfor%}
+    </ul>
+
+    <div class="tab-content well">
+      {%for course in course_list%}
+          <div role="tabpanel" 
+              {%ifequal forloop.counter course_counter %}
+                  class="tab-pane fade in active" 
+              {%else%}
+                  class="tab-pane fade" 
+              {%endifequal%}
+              id="{{course.id}}"
+              cid = "{{course.id}}">
+              
+              <div>
+
+                    {%if course.homework_list%}
+                        <table class="table table-bordered">
+                            <thead>            
+                                <tr>
+                                    <th>作业次序</th>
+
+                                    <!-- <th>作业名称</th> -->
+                                    <th>作业 内容</th>
+                                    <!-- <th>作业截至时间</th> -->
+
+                                    <th> 已提交作业 </th>
+                                    <th> 已提交作业时间</th>
+                                    <th> 提交作业</th>
+                                    <th> 评分</th>
+                                    <!-- <th> 提交作业2</th> -->
+                                </tr>
+                            </thead>
+
+
+                            <tbody>
+
+                              {%for homework in course.homework_list%}
+                                  <tr>
+                                    <td>{{homework.homework_rank}}</td>
+
+
+                                    {#<td>{{homework.name}}</td>#}
+                                    <td>
+
+
+                                      
+
+
+                                      <button type="button" class="btn btn-success viewHomeworkContent" 
+                                      data-toggle="modal"
+                                      data-target="#homework_modal"
+                                      homework-name="{{homework.name}}"
+                                      homework-required = "{{homework.required}}"
+                                      homework-deadline="{{homework.deadline|date:"Y-m-d H:i"}}"
+                                      homework-is_final={{homework.is_final}}
+                                      >查看
+                                      </button>
+                                      
+                                    </td>
+                                    {#<td>{{homework.deadline|date:"Y-m-d H:i"}}</td>#}
+                                    <td>
+                                        {%if homework.submitted%}
+                                            <a type="button" class="btn btn-warning viewHomeworkRequired" 
+                                         href="{{homework.submitted.homework_file.url}}"
+                                          >下载作业
+                                          </a>
+                                        {%else%}
+                                            未提交
+                                        {%endif%}
+                                    </td>
+
+
+                                    <td>
+                                      {%if homework.submitted%}
+                                       {{homework.submitted.submit_time|date:"Y-m-d H:i"}}
+                                      </a>
+                                        {%else%}
+                                            未提交
+                                        {%endif%}
+                                    </td>
+
+
+                                    
+                                    <td> 
+
+            {%if homework.deadline >= now_datetime%}
+
+                <form method="POST"  action="" enctype="multipart/form-data" >
+                    {% csrf_token %}
+
+
+                    <input type="file"  class="file"  size="1" hidefocus enctype="multipart/form-data" name="file" accept="doc,docx" >
+                    <input type="text" style="display: none;" name="hid" value="{{homework.id}}">
+                    <input type="text" style="display: none;" name="course_counter" 
+                    value="{{forloop.parentloop.counter}}">
+
+                    <br/>
+                    <button type= "submit" class="btn btn-info submit_button"> <span class="glyphicon glyphicon-upload"></span> <span>上传</span></button>
+                </form>
+            {%else%}
+                 <div style="color:blue;">超过截止日期，不可提交作业 </div>
+            {%endif%}
+
+                                    </td>
+
+
+                                    <td> 
+                                        {%if homework.submitted.score%}
+                                            {{homework.submitted.score}}
+                                        {%elif homework.submitted%}
+                                            老师还未评分！
+                                        {%else%}
+                                            未提交
+                                        {%endif%}
+                                    </td>
+
+
+
+
+
+                                    <!-- <td>
+                                      {%if homework.submitted%}
+                                            <a type="button" class="btn btn-warning viewHomeworkRequired" 
+                                         href="/student/homework_submit/{{homework.submitted.id}}"
+                                          >下载作业
+                                          </a>
+                                        {%else%}
+                                            未提交
+                                        {%endif%}
+                                    </td> -->
+
+
+                                  </tr>
+                              {%endfor%}
+                            </tbody>
+                        </table>
+                    {%else %}
+                        <h3> 没有已发布作业!</h3>
+                    {%endif%}
+              </div>
+          </div>
+      {%endfor%}
+    </div>
+
+{%else%}
+    <h3> 您还未选课！</h3>
+{%endif%}
+
+
+
+
+
+
+
+<!-- include homework model -->
+{%include "widgets/homework_model.html"%}
+
+
+
+
+
+<script type='text/javascript' src="{{STATIC_URL}}bootstrap-datepicker/js/bootstrap-datetimepicker.js"></script>
+<script type='text/javascript' src="{{STATIC_URL}}js/student/homework_submit.js"></script>
+
+
+
+{%endblock%}

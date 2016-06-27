@@ -1,0 +1,154 @@
+<link rel="stylesheet" href="{{ STATIC_URL  }}bootstrap-datepicker/css/bootstrap-datetimepicker.css" type="text/css" media="screen" />
+<link rel="stylesheet" type="text/css" media="screen" href="{{ STATIC_URL }}style/student/base.css" >
+<form action="/{{role}}/studentselfinfo/{{student.baseinfo_studentid}}" method = "post" class="form-horizontal">
+    {% csrf_token  %}
+    <div id="studentinfo"  class="row container-fluid" fid = {{isSave}}>
+<div class= "col-lg-6">
+    <fieldset>
+    <legend>基本信息</legend>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">姓名</label>
+        <div class="input-group col-lg-6">
+            <input type = "text" class="form-control" value={{student.baseinfo_name}} disabled></input>
+            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label"> {{infoform.baseinfo_sex.label}}
+        </label>
+        <div class="input-group col-lg-6 {% if infoform.baseinfo_sex.errors  %}infoerror{% endif%}">
+        {{infoform.baseinfo_sex}}
+            <span class="input-group-addon"><span class="glyphicon glyphicon-heart-empty"></span></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label"> {{infoform.baseinfo_nation.label}}
+        </label>
+        <div class="input-group col-lg-6 {% if infoform.baseinfo_nation.errors  %}infoerror{% endif%}">
+        {{infoform.baseinfo_nation}}
+            <span class="input-group-addon"><span class="glyphicon glyphicon-picture"></span></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label"> {{infoform.baseinfo_birth.label}}
+        </label>
+        <div class="input-group date form-date col-lg-6 {% if infoform.baseinfo_birth.errors  %}infoerror{% endif%}"  data-date-format="yyyy-mm-dd">
+        {{infoform.baseinfo_birth}}
+            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label"> {{infoform.baseinfo_idcard.label}}
+        </label>
+        <div class="input-group date form-date col-lg-6 {% if infoform.baseinfo_idcard.errors  %}infoerror{% endif%}"  data-date-format="yyyy-mm-dd">
+            {{infoform.baseinfo_idcard}}
+            <span class="input-group-addon"><span class="glyphicon glyphicon-info-sign"></span></span>
+        </div>
+    </div>
+    </fieldset>
+    <hr>
+    <fieldset>
+    <legend>联系方式</legend>
+    <div class="form-group">
+        <label class="col-lg-2 control-label"> {{infoform.contactinfo_dormitory.label}}
+        </label>
+        <div class="input-group col-lg-6 {% if infoform.contactinfo_dormitory.errors  %}infoerror{% endif%}">
+        {{infoform.contactinfo_dormitory}}
+            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label"> {{infoform.contactinfo_telephone.label}}
+        </label>
+        <div class="input-group col-lg-6 {% if infoform.contactinfo_telephone.errors  %}infoerror{% endif%}">
+        {{infoform.contactinfo_telephone}}
+            <span class="input-group-addon"><span class="glyphicon glyphicon-heart-empty"></span></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label"> {{infoform.contactinfo_email.label}}
+        </label>
+        <div class="input-group col-lg-6 {% if infoform.contactinfo_email.errors  %}infoerror{% endif%}">
+        {{infoform.contactinfo_email}}
+            <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+        </div>
+    </div>
+    </fieldset>
+</div>
+<div class= "col-lg-6">
+    <fieldset>
+    <legend>院系信息</legend>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">学号</label>
+            <div class="input-group col-lg-6">
+            <input type = "text" class="form-control" value={{student.baseinfo_studentid}} disabled></input>
+            <span class="input-group-addon"><span class="glyphicon glyphicon-home"></span></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label"> {{infoform.collegeinfo_apartment.label}}
+        </label>
+        <div class="input-group col-lg-6 {% if infoform.collegeinfo_apartment.errors  %}infoerror{% endif%}">
+        {{infoform.collegeinfo_apartment}}
+            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label"> {{infoform.collegeinfo_college.label}}
+        </label>
+        <div class="input-group col-lg-6 {% if infoform.collegeinfo_college.errors  %}infoerror{% endif%}">
+        {{infoform.collegeinfo_college}}
+            <span class="input-group-addon"><span class="glyphicon glyphicon-heart-empty"></span></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label"> {{infoform.collegeinfo_major.label}}
+        </label>
+        <div class="input-group col-lg-6 {% if infoform.collegeinfo_major.errors  %}infoerror{% endif%}">
+        {{infoform.collegeinfo_major}}
+            <span class="input-group-addon"><span class="glyphicon glyphicon-picture"></span></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label"> {{infoform.collegeinfo_class.label}}
+        </label>
+        <div class="input-group date form-date col-lg-6 {% if infoform.collegeinfo_class.errors  %}infoerror{% endif%}"  data-date-format="yyyy-mm-dd">
+        {{infoform.collegeinfo_class}}
+            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+        </div>
+    </div>
+    </fieldset>
+    <hr>
+    <fieldset>
+    <legend>实践班信息</legend>
+    <div class="form-group">
+         <label class="col-lg-3 control-label">实践班</label>
+            <div class="input-group col-lg-6">
+            <input type = "text" class="form-control" value={{student.small_class.practice_class}} disabled></input>
+            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-3 control-label">所属班级</label>
+            <div class="input-group col-lg-6">
+            <input type = "text" class="form-control" value={{student.small_class}} disabled></input>
+            <span class="input-group-addon"><span class="glyphicon  glyphicon-picture"></span></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-3 control-label">进入年份</label>
+            <div class="input-group col-lg-6">
+            <input type = "text" class="form-control" value={{student.innovation_grade}} disabled></input>
+            <span class="input-group-addon"><span class="glyphicon glyphicon-heart-empty"></span></span>
+        </div>
+    </div>
+    </fieldset>
+</div>
+    <br>
+    <div class = "col-lg-10">
+        <button class="btn btn-primary "   type = "submit" >保存信息</button>
+    </div>
+</div>
+</form>
+<script type='text/javascript' src="{{STATIC_URL}}bootstrap-datepicker/js/bootstrap-datetimepicker.js"></script>
+<script type='text/javascript' src="{{STATIC_URL}}js/student/studentinfo.js"></script>

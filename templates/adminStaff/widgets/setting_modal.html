@@ -1,0 +1,110 @@
+<div class="modal fade"  role="dialog" id="next_term_modal">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <a class="close" data-dismiss="modal">×</a>
+                <h3>进行下一学期</h3>            
+            </div>
+
+            <div class="modal-body">
+                <h3>确定从{{cur_year}}学年{{cur_term}}学期进行到{{next_year}}学年{{next_term}}学期？</h3>
+                <div class="form-group">
+                    <label>设置学期第一天（第一周周一）</label>
+                    <div class="input-group">
+                        <input id="first_day" type="text" class="form-control" value="{{course_start|date:'Y-m-d'}}">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <a class="btn btn-primary" data-dismiss="modal" id="next_term_confirm">确定</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade"  role="dialog" id="course_time_modal">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <a class="close" data-dismiss="modal">×</a>
+                <h3>设置学生选课时间段</h3>            
+            </div>
+
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>选课开始时间</label>
+                    <div class="input-group">
+                        <input id="course_start" type="text" class="form-control" value="{{course_start|date:'Y-m-d H:i'}}">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>选课结束时间</label>
+                    <div class="input-group">
+                        <input id="course_end" type="text" class="form-control" value="{{course_end|date:'Y-m-d H:i'}}">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <a class="btn btn-primary" data-dismiss="modal" id="course_time_confirm">确定</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade"  role="dialog" id="score_time_modal">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <a class="close" data-dismiss="modal">×</a>
+                <h3>设置教师录入成绩时间段</h3>            
+            </div>
+
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>录入成绩开始时间</label>
+                    <div class="input-group">
+                        <input id="score_start" type="text" class="form-control" value="{{score_start|date:'Y-m-d H:i'}}">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>录入成绩结束时间</label>
+                    <div class="input-group">
+                        <input id="score_end" type="text" class="form-control" value="{{score_end|date:'Y-m-d H:i'}}">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <a class="btn btn-primary" data-dismiss="modal" id="score_time_confirm">确定</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+

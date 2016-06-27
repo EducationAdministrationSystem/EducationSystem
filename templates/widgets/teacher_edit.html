@@ -1,0 +1,36 @@
+<form action="" method="POST" id="teacher_edit_form">
+	<p><span><strong>如果想修改教工号，请联系管理员</strong></span></p>
+	<hr>
+	<div class="row">
+		<label class="col-lg-3">姓名</label>
+		<span class="col-lg-9">{{form.baseinfo_name}}</span>
+	</div>
+	<div class="row" style="display: none">
+		<label class="col-lg-3">教工号</label>
+		<span class="col-lg-9">{{form.baseinfo_teacherid}}</span>
+	</div>
+	<div class="row">
+		<label class="col-lg-3">班级</label>
+		<span class="col-lg-9">{{form.small_class}}</span>
+	</div>
+	<div class="row">
+		<label class="col-lg-3">邮件</label>
+		<span class="col-lg-9">{{form.teacher_email}}</span>
+	</div>
+	<div class="row">
+		<label class="col-lg-3">个人电话</label>
+		<span class="col-lg-9">{{form.teacher_telephone}}</span>
+	</div>
+	<div class="row">
+		<label class="col-lg-3">办公室</label>
+		<span class="col-lg-9">{{form.office_address}}</span>
+	</div>
+	<div class="row">
+		<label class="col-lg-3">办公室电话</label>
+		<span class="col-lg-9">{{form.office_phone}}</span>
+	</div>
+	<div class="modal-footer">
+		<button type="submit" class="btn btn-default" data-dismiss="modal" id="submitBtn">保存</button>
+		<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+	</div>
+</form>

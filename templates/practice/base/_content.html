@@ -1,0 +1,12 @@
+{% extends "base/_base.html"%}
+{% block before_css%}
+{{block.super}}
+{%endblock%}
+{%block menu_list%}
+{% include "practice/widgets/menu_list.html"%}
+{%endblock%}
+{% block main_content%}
+<div class="main-content">
+    {% block outter_content%}{%endblock%}
+</div>
+{% endblock%}

@@ -1,0 +1,20 @@
+{% extends "practice/base/teacher_manage_base.html"%}
+{% block inner_content%}
+	<h3>您的小班</h3>
+	<table class="table table-bordered table-striped">
+		<tr class="row">
+			<th class="col-lg-4">小班</th>
+			<th class="col-lg-8">老师</th>
+		</tr>
+		{% for class,value in class_teacher_list.items %}
+			<tr class="row">
+				<td class="col-lg-4"><span>{{class}}</span></td>
+				<td class="col-lg-8">
+					{% for teacher in value %}
+					<span>{{teacher}}</span>
+					{% endfor %}
+				</td>
+			</tr>
+		{% endfor %}
+	</table>
+{%endblock%}

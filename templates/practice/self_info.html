@@ -1,0 +1,18 @@
+{% extends "practice/base/self_info_base.html"%}
+{% block inner_content%}
+<h3>实践班信息</h3>
+<div class="practice_content">
+	<table class="table">
+		<tr>
+			<td class="col-lg-3">全称</td>
+			<td class="col-lg-3">{{full_name}}</td>
+			<td class="col-lg-6"></td>
+		</tr>
+		<tr>
+			<td class="col-lg-3">简称</td>
+			<td class="col-lg-3">{{nick_name}}</td>
+			<td class="col-lg-6"></td>
+		</tr>
+	</table>
+</div>
+{% endblock%}

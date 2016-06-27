@@ -1,0 +1,55 @@
+
+<div id="delete_course">
+    <table class ="table table-hover table-striped">
+        <tr>
+            <th>课程ID</th>
+            <th>课程名称</th>
+            <th>教师名</th>
+            <th>教师ID</th>
+            <th>实践学时</th>
+            <th>理论学时</th>
+            <th>理论课</th>
+            
+        </tr> 
+        {% for course in course_list%}
+          <tr iid={{course.id}}>
+              <td>{{course.course_id.course_plan_id}}</td>
+              <td>{{course.course_id.course_name}}</td>
+              <td>{{course.teacher}}</td>
+              <td>{{course.teacher.teacher_id}}</td>
+              <td>{{course.practice_periods}}</td>
+              <td>{{course.theory_periods}}</td>
+              <td>
+                 <button type="button" class="btn btn-success modifyHomework" data-toggle="modal" 
+                    data-target="#required_modal" id="lookup_comment">查看评估</button>
+              </td>
+          </tr>
+        {%endfor%}
+    </table>
+</div>
+
+
+
+<div class="modal fade" id="required_modal" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">评估内容</h3>
+      </div>
+
+      <div class="modal-body" id="comment_content">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="{{STATIC_URL}}js/teacher/comment.js"></script>
+
+
+
+

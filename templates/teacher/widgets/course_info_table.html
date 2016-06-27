@@ -1,0 +1,32 @@
+<div id="btn_div">
+    <button class="btn btn-primary" id="members_export_btn" args="{{course_id}}">导出名单xls</button>
+</div>
+<table class="table table-bordered table-hover">
+    <thead>
+        <th>学号</th>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>学部</th>
+        <th>院系</th>
+        <th>专业</th>
+        <th>班级</th>
+        <th>电话</th>
+    </thead>
+    <tbody>
+        {% for select in item2_list %}
+        <tr>
+            <td>{{select.student.baseinfo_studentid}}</td>
+            <td>{{select.student.baseinfo_name}}</td>
+            <td>{{select.student.get_baseinfo_sex_display}}</td>
+            <td>{{select.student.get_collegeinfo_apartment_display}}</td>
+            <td><span data-toggle="tooltip" data-placement="top" title="{{select.student.get_collegeinfo_college_display}}">{{select.student.get_collegeinfo_college_display|truncatechars:10}}</span></td>
+            <td><span data-toggle="tooltip" data-placement="top" title="{{select.student.collegeinfo_major}}">{{select.student.collegeinfo_major|truncatechars:10}}</span></td>
+            <td>{{select.student.collegeinfo_class}}</td>
+            <td>{{select.student.contactinfo_telephone}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<div id="paginator2">
+{% include "widgets/paginator2.html" %}
+</div>

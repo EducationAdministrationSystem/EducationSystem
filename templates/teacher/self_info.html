@@ -1,0 +1,22 @@
+{% extends "teacher/base/none_nav_base.html"%}
+{% block inner_content%}
+<h3>个人信息</h3>
+<div id="selfInfo">
+	{% include "widgets/teacher_info.html" %}
+</div>
+<button type="button" class="btn btn-primary" id="selfinfo_edit" data-toggle="modal" data-target="#edit-Modal">修改</button>
+<span id="message"></span>
+
+<div class="modal fade" id="edit-Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="myModalLabel">修改教师信息</h4>
+			</div>
+			<div class="modal-body" id="edit-content">
+				    	
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock%}

@@ -1,0 +1,75 @@
+{% extends "teacher/base/score_manage_base.html"%}
+{% block inner_content%}
+<h3>本学期您共有{{courses1.count}}门课参与教学:</h3>
+<table class="table table-bordered">
+    <thead>
+        <th>课程名</th>
+        <th>考勤</th>
+        <th>作业</th>
+        <th>期末</th>
+        <th>操作</th>
+    </thead>
+    <tbody>
+        {% for course in courses1 %}
+        <tr>
+            <td>{{course}}</td>
+            <td>{{course.attendance_rate}}</td>
+            <td>{{course.homework_rate}}</td>
+            <td>{{course.final_rate}}</td>
+            {% if not course.is_finished %}
+            <td><a data-toggle="modal" href="#set_modal" class="btn btn-primary" name="ratio_set" args="{{course.id}}">设置</a></td>
+            {% else %}
+            <td><span>已公布</span></td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+
+    </tbody>
+</table>
+
+<h3>上学期您共有{{courses2.count}}门课参与教学:</h3>
+<table class="table table-bordered">
+    <thead>
+        <th>课程名</th>
+        <th>考勤</th>
+        <th>作业</th>
+        <th>期末</th>
+        <th>操作</th>
+    </thead>
+    <tbody>
+        {% for course in courses2 %}
+        <tr>
+            <td>{{course}}</td>
+            <td>{{course.attendance_rate}}</td>
+            <td>{{course.homework_rate}}</td>
+            <td>{{course.final_rate}}</td>
+            {% if not course.is_finished %}
+            <td><a data-toggle="modal" href="#set_modal" class="btn btn-primary" name="ratio_set" args="{{course.id}}">设置</a></td>
+            {% else %}
+            <td><span>已公布</span></td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+
+    </tbody>
+</table>
+<div class="modal fade" id="set_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+	  <div class="modal-content">
+	    <div class="modal-header">
+	      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+	      <h3 class="modal-title">课程系数设置</h3>
+	    </div>
+	    <div class="modal-body">
+
+        </div>
+    <div class="modal-footer">
+        <button type="button" id="ratio_save_btn" class="btn btn-primary" data-dismiss="modal">保存</button>  
+	    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+	    </div>
+	  </div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<script type="text/javascript" src="{{STATIC_URL}}js/teacher/ratio_set.js"></script>
+{% endblock%}

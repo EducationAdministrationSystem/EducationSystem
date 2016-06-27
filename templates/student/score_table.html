@@ -1,0 +1,5 @@
+{% extends "student/base/none_nav_base.html"%}
+{% block inner_content%}
+<h2>您已经修读了{{selects.count}}门课程</h2>
+{% include "widgets/student_score_table.html" %}
+{% endblock%}

@@ -1,0 +1,14 @@
+{% extends "adminStaff/base/class_info_base.html"%}
+{% block inner_content%}
+
+{% include "adminStaff/widgets/class_filter_form.html" %}
+
+<div id="course_set_table">
+</div>
+<div id="course_info_table">
+</div>
+<script type="text/javascript" src="{{STATIC_URL}}js/teacher/classList.js"></script>
+
+
+
+{% endblock%}

@@ -1,0 +1,23 @@
+    <div id="studentmanage">
+        <form action="#" id="studentaddform" class="form-horizontal">
+        {% csrf_token %}
+        <h3>添加学生</h3>
+        <div class= "row">
+            {% for field in addform %}
+            <div class="col-lg-3">
+                <div class="input-group {% if field.errors  %}infoerror{% endif%}">
+                    <span class="input-group-addon">{{field.label}}</span>
+                {{field}}
+                </div>
+            </div>
+            {% endfor %}
+            <br>
+            <br>
+            <div class = "col-lg-8">
+                <button class="btn btn-primary" type = "button" onclick="add_student()">添加</button>
+                <span id="studentadd_error_message"></span>
+            </div>
+        </div>
+        </form>
+    </div>
+    <script type='text/javascript' src="{{STATIC_URL}}js/common/studentmanage.js"></script>

@@ -1,0 +1,35 @@
+{% extends "base/base.html"%}
+{% block before_css%}
+{{block.super}}
+{%endblock%}
+{% block basepage%} 
+<div id="nav-container">
+  
+    <div id="headerpic">
+        {% if not recruit%}
+        <ul class="nav navbar-right">
+            <li id="welcome_word">
+                欢迎你：{{user}}
+            </li>
+        </ul>
+        {%endif%}
+    </div>
+   
+        <div class="container-fluid main-container">
+            <div class="row col-lg-12">
+                <div class="col-lg-3 nav-left">
+                    {%block menu_list%}{%endblock%}
+
+                </div>
+                <div class="col-lg-9">
+                    {%block main_content%}{%endblock%}
+
+                </div>
+            </div>
+        </div>
+        {% block nav_content %}
+        {% endblock %}
+    </div>
+</div>
+
+{% endblock%}

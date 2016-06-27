@@ -1,0 +1,22 @@
+<table class="table table-bordered table-hover" style="width: 500px">
+    <thead>
+        <tr>
+        <td>课程名</td>
+        <td>课程号</td>
+        <td>开课学年</td>
+        <td>开课学期</td>
+        <td>得分</td>
+        </tr>
+    </thead>
+    <tbody>
+    {% for select in selects %}
+        <tr>
+            <td>{{select.course}}</td>
+            <td>{{select.course.course_id.course_plan_id}}</td>
+            <td>{{select.course.start_year}}</td>
+            <td>{{select.course.course_id.get_course_term_display}}</td>
+            <td>{{select.score.total}}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

@@ -1,0 +1,20 @@
+<form action="/{{role}}/studentmanage/search" id="studentsearchform"  method="POST" class="form-horizontal">
+        {% csrf_token %}
+        <h3>学生检索</h3>
+        <div class= "row">
+            {% for field in searchform %}
+            <div class="col-lg-3">
+                <div class="input-group">
+                    <span class="input-group-addon">{{field.label}}</span>
+                {{field}}
+                </div>
+            </div>
+            {% endfor %}
+            <br>
+            <br>
+            <div class = "col-lg-8">
+                <button class="btn btn-primary" type = "submit" >检索</button>
+                <button class="btn btn-primary" style="margin-left:30px;" type = "button" onclick="export_search()" >导出</button>
+            </div>
+        </div>
+</form>

@@ -1,0 +1,16 @@
+<table class="classlist table table-bordered table-striped" id="classlist">
+	<tr class="row">
+		<th class="col-lg-5">简称</th>
+		<th class="col-lg-5">全称</th>
+		<th class="col-lg-2">功能</th>
+	</tr>
+	{% for item in classlist %}
+		<tr class="row" iid={{item.id}}>
+			<td class="col-lg-5">{{item.nick_name}}</td>
+			<td class="col-lg-5">{{item.full_name}}</td>
+			<td class="col-lg-2">
+				<button type="button" class="btn btn-primary" id="delete_Button">删除</button>
+			</td>
+		</tr>
+	{% endfor %}
+</table>

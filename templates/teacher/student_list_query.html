@@ -1,0 +1,27 @@
+{% extends "teacher/base/self_info_base.html"%}
+{% block inner_content%}
+
+{% include "teacher/widgets/student_filter_form.html" %}
+
+<div id="student_set_table">
+</div>
+<div class="modal fade" id="student_score_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+	  <div class="modal-content">
+	    <div class="modal-header">
+	      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h2 class="modal-title">成绩单</h2>
+	    </div>
+	    <div class="modal-body">
+        </div>
+    <div class="modal-footer">
+	    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+	    </div>
+	  </div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<script type="text/javascript" src="{{STATIC_URL}}js/teacher/studentList.js"></script>
+
+{% endblock%}

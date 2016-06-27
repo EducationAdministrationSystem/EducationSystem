@@ -1,0 +1,28 @@
+{% extends "teacher/base/score_manage_base.html"%}
+{% block inner_content%}
+{% if message%}
+<h1>
+    {{message}}
+</h1>
+{%else%}
+<br/>
+<form class="form-inline" role="form">
+<select class="form-control" id="course_select">
+    {% for course in courses %}
+        <option value="{{course.id}}">{{course}}</option>
+    {% endfor %}
+</select>
+<label class="checkbox-inline">
+    <input type="checkbox" id="checkbox_select_total" style="position:relative;">直接录入总分
+</label>
+
+</form>
+<h3 id="statistics" style="color: red"></h3>
+<div id="div_sub_score_checkin">
+</div>
+<div id="div_total_score_checkin" style="display:none">
+</div>
+{%endif%}
+<script type="text/javascript" src="{{STATIC_URL}}js/teacher/score_checkin.js"></script>
+
+{% endblock%}

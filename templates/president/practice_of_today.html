@@ -1,0 +1,52 @@
+{% extends "president/base/none_navbar_base.html"%}
+{% block inner_content%}
+<link rel="stylesheet" href="{{ STATIC_URL   }}bootstrap-datepicker/css/bootstrap-datetimepicker.css" type="text/css" media="screen" />
+<form class="form-inline" method="POST">
+    {% csrf_token %}
+<div class="input-group">
+    <input id="course_day" name="course_day" type="text" class="form-control" value="{{date|date:'Y-m-d'}}">
+    <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+</div>
+<button type="submit" class="btn btn-primary">查询</button>
+</form>
+<h3>
+    今天实践上机人数
+</h3>
+    <table class="table table-hover table-striped">
+        <tr>
+            <th>班级</th>
+            <th>第一大节</th>
+            <th>第二大节</th>
+            <th>第三大节</th>
+            <th>第四大节</th>
+            <th>第五大节</th>
+            <th>第六大节</th>
+        </tr>
+        {% for item in classes%}
+        <tr >
+            <td>{{item.class_name}}</td>
+            <td>{{item.time1}}</td>
+            <td>{{item.time2}}</td>
+            <td>{{item.time3}}</td>
+            <td>{{item.time4}}</td>
+            <td>{{item.time5}}</td>
+            <td>{{item.time6}}</td>
+        </tr>
+        {%endfor%}
+    </table>
+<script type='text/javascript' src="{{STATIC_URL}}bootstrap-datepicker/js/bootstrap-datetimepicker.js"></script>
+<script>
+    $("#course_day").datetimepicker({
+        format:'yyyy-mm-dd',
+        weekStart:1,
+        todayBtn: 1,
+        autoclose: 1,
+        taodayHighlight:1,
+        startView:2,
+        forceParse:0,
+        minView:2
+
+
+    });
+</script>
+{%endblock%}

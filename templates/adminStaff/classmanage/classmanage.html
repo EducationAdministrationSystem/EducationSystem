@@ -1,0 +1,47 @@
+{% extends "adminStaff/base/class_manage_base.html"%}
+
+{% block inner_content%}
+	<div class="add_class" id="add_class">
+		<form action="" method="POST" id="class-add-form">
+			{% csrf_token %}
+			<h3>添加班级</h3>
+			<div class= "row">
+	            <div class="col-lg-3">
+	                <div class="input-group">
+	                    <span class="input-group-addon">全称</span>
+	                	{{classAddForm.fullname}}
+	                </div>
+	            </div>
+	            <div class="col-lg-3">
+	                <div class="input-group">
+	                    <span class="input-group-addon">简称</span>
+	                	{{classAddForm.nickname}}
+	                </div>
+	            </div>
+	            <button class="btn btn-primary" type = "button" onclick="add_class()">添加</button>
+	            <span id="class-add-message"></span>
+        	</div>
+		</form>
+	</div>
+	<div class="classlist" id="classlist">
+		<h3>班级列表</h3>
+		<div id="classlist-content">
+			<table class="classlist table table-bordered table-striped" id="classlist">
+				<tr class="row">
+					<th class="col-lg-5">简称</th>
+					<th class="col-lg-5">全称</th>
+					<th class="col-lg-2">功能</th>
+				</tr>
+				{% for item in classlist %}
+					 <tr class="row" iid={{item.id}}>
+						<td class="col-lg-5">{{item.nick_name}}</td>
+						<td class="col-lg-5">{{item.full_name}}</td>
+						<td class="col-lg-2">
+							<button type="button" class="btn btn-primary" id="delete_Button">删除</button>
+						</td>
+					</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+{%endblock%}

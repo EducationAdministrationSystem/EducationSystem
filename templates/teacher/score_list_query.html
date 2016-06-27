@@ -1,0 +1,12 @@
+{% extends "teacher/base/self_info_base.html"%}
+{% block inner_content%}
+
+{% include "teacher/widgets/class_filter_form.html" %}
+
+<div id="course_set_table">
+</div>
+<div id="score_info_table">
+</div>
+<script type="text/javascript" src="{{STATIC_URL}}js/teacher/scoreList.js"></script>
+
+{% endblock%}

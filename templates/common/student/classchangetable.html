@@ -1,0 +1,68 @@
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="active"><a href="#home" role="tab" data-toggle="tab" >未处理
+</a></li>
+  <li role="presentation"><a href="#profile" role="tab" data-toggle="tab">已处理</a></li>
+</ul>
+<div class="tab-content">
+  <div role="tabpanel" class="tab-pane active" id="home">
+  {% if changeclass_set %}
+  <table id = "changeclasstable"  class="table ">
+  <thead>
+      <tr>
+        <th>学生</th>
+        <th>转入年份</th>
+        <th>原实践班</th>
+        <th>原实践班意见</th>
+        <th>接收实践班</th>
+        <th>接收实践班意见</th>
+        <th>院长意见</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%for  apply in changeclass_set %}
+        <tr>
+            <td>{{apply.student}}</td>
+            <td>{{apply.innovation_grade}}</td>
+            <td>{{apply.originclass}}</td>
+            <td>{% ifequal change_role "origin" %}<a data-toggle="modal" id="overstatus_{{apply.id}}" onclick="get_subject_id('{{apply.id}}','{{change_role}}')" href="#classchange_choice" data-target="#classchange_choice"  pid="{{apply.id}}" class="btn btn-primary">{{apply.get_originOK_display}}</a>{%else%}{{apply.get_originOK_display}}{%endifequal%}</td>
+            <td>{{apply.receiveclass}}</td>
+            <td>{% ifequal change_role "receive" %}<a data-toggle="modal" id="overstatus_{{apply.id}}" onclick="get_subject_id('{{apply.id}}','{{change_role}}')" href="#classchange_choice" data-target="#classchange_choice"  pid="{{apply.id}}" class="btn btn-primary">{{apply.get_receiveOK_display}}</a>{%else%}{{apply.get_receiveOK_display}}{%endifequal%}</td>
+            <td>{% ifequal change_role "dean" %}<a data-toggle="modal" id="overstatus_{{apply.id}}" onclick="get_subject_id('{{apply.id}}','{{change_role}}')" href="#classchange_choice" data-target="#classchange_choice"  pid="{{apply.id}}" class="btn btn-primary">{{apply.get_deanOK_display}}</a>{%else%}{{apply.get_deanOK_display}}{%endifequal%}</td>
+        </tr>
+        {%  endfor %}
+    </tbody>
+  </table>
+  {%  endif %}
+  </div>
+  <div role="tabpanel" class="tab-pane" id="profile">
+    {% if changeclasshandled_set %}
+    <table id = "changeclasstable"  class="table ">
+    <thead>
+        <tr>
+          <th>学生</th>
+          <th>转入年份</th>
+          <th>原实践班</th>
+          <th>原实践班意见</th>
+          <th>接收实践班</th>
+          <th>接收实践班意见</th>
+          <th>院长意见</th>
+        </tr>
+      </thead>
+      <tbody>
+        {%for  apply in changeclasshandled_set %}
+          <tr>
+              <td>{{apply.student}}</td>
+              <td>{{apply.innovation_grade}}</td>
+              <td>{{apply.originclass}}</td>
+              <td>{{apply.get_originOK_display}}</td>
+              <td>{{apply.receiveclass}}</td>
+              <td>{{apply.get_receiveOK_display}}</td>
+              <td>{{apply.get_deanOK_display}}</td>
+          </tr>
+          {%  endfor %}
+      </tbody>
+      </table>
+      {% endif %}
+  </div>
+</div>
+<script type='text/javascript' src="{{STATIC_URL}}js/common/studentmanage.js"></script>

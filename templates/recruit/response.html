@@ -1,0 +1,14 @@
+{% extends "recruit/base/none_nav_base.html"%}
+{% block inner_content %}
+<div class="container content-container">
+  <div class="container main-content-container" style="width: 770px; margin-left: 90px">
+
+    <div style="text-align:center;margin-top:100px">
+    <img src="{{STATIC_URL}}images/success_128.png"></img>
+    <p>报名成功！<span id="time">3</span>秒后跳转...</p>
+		<p>后续详情请关注创新创业网站首页公告！</p>
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src="{{STATIC_URL}}js/recruit/delay.js"></script>
+{% endblock %}

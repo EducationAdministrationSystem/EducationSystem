@@ -1,0 +1,19 @@
+{% extends "adminStaff/base/_content.html"%}
+
+{% block before_css%}
+	{{block.super}}
+	<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}style/adminStaff/teachermanage.css">
+{%endblock%}
+
+{% block outter_content%}
+    <div class="mynavbar">
+        {% include "adminStaff/widgets/teacher_manage_navbar.html" %}
+    </div>
+    <div class="mycontent">
+        {% block inner_content%}{%endblock%}
+    </div>
+{%endblock%}
+
+{% block endjs %}
+	<script type="text/javascript" src="{{STATIC_URL}}js/teacher/teachermanage.js"></script>
+{% endblock %}

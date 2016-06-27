@@ -1,0 +1,43 @@
+
+{% extends "adminStaff/base/none_nav_base.html"%}
+{% block inner_content%}
+<link rel="stylesheet" type="text/css" media="screen" href="{{ STATIC_URL  }}style/adminStaff/managementsetting.css"/>
+<link rel="stylesheet" href="{{ STATIC_URL   }}bootstrap-datepicker/css/bootstrap-datetimepicker.css" type="text/css" media="screen" />
+
+<div class="settingDiv">
+    <button class="btn btn-primary btn-lg" data-toggle="modal"data-target="#next_term_modal" >进行下一学期</button>
+    <h3>当前学期为<span class="key">{{cur_year}}</span>学年<span class="key">{{cur_term}}</span>学期。</h3>
+</div>
+<div class="settingDiv">
+    <button class="btn btn-primary btn-lg" data-toggle="modal"data-target="#course_time_modal" >设置学生选课时间段</button>
+    {% if course_select_switch%}
+    <button class="btn btn-info btn-lg" id="course_select_switch">关闭选课开关</button>
+    {%else%}
+    <button class="btn btn-warning btn-lg" id="course_select_switch">打开选课开关</button>
+    {%endif%}
+    {% if course_start and course_end%}
+    <h3>本学期学生选课时间段为<span class="key">{{course_start|date:"Y-m-d H:i"}}</span>开始<span class="key">{{course_end|date:"Y-m-d H:i"}}</span>结束。</h3>
+    {% else%}
+    <h3>新学期学生选课时间段还没有设置。</h3>
+    {% endif%}
+</div>
+<div class="settingDiv">
+    <button class="btn btn-primary btn-lg" data-toggle="modal"data-target="#score_time_modal" >设置教师录入成绩时间段</button>
+    {% if score_start and score_end%}
+    <h3>本学期录入成绩时间段为<span class="key">{{score_start|date:"Y-m-d H:i"}}</span>开始<span class="key">{{score_end|date:"Y-m-d H:i"}}</span>结束。</h3>
+    {% else%}
+    <h3>新学期教师录入成绩时间段还没有设置。</h3>
+    {% endif%}
+</div>
+<div class="settingDiv">
+    {% if class_change_switch%}
+    <button class="btn btn-info btn-lg" id="class_change_switch">关闭转班开关</button>
+    {%else%}
+    <button class="btn btn-warning btn-lg" id="class_change_switch">打开转班开关</button>
+    {%endif%}
+
+</div>
+{%include "adminStaff/widgets/setting_modal.html"%}
+<script type='text/javascript' src="{{STATIC_URL}}bootstrap-datepicker/js/bootstrap-datetimepicker.js"></script>
+<script type='text/javascript' src="{{STATIC_URL}}js/adminStaff/managementsetting.js"></script>
+{%endblock%}

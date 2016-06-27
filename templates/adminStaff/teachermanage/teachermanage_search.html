@@ -1,0 +1,84 @@
+{% extends "adminStaff/base/teacher_manage_base.html"%}
+
+{% block inner_content %}
+	<div id="teacher-search">
+		<form action="" method="GET" id="teacher-search-form">
+			{% csrf_token %}
+			<h3>检索教师</h3>
+			<div class= "row">
+	            <div class="col-lg-3">
+	                <div class="input-group">
+	                    <span class="input-group-addon">姓名</span>
+	                	{{searchform.baseinfo_name}}
+	                </div>
+	            </div>
+	            <div class="col-lg-3">
+	                <div class="input-group">
+	                    <span class="input-group-addon">教工号</span>
+	                	{{searchform.baseinfo_teacherid}}
+	                </div>
+	            </div>
+	            <div class="col-lg-3">
+	                <div class="input-group">
+	                    <span class="input-group-addon">班级</span>
+	                	{{searchform.small_class}}
+	                </div>
+	            </div>
+	            <button class="btn btn-primary" type = "button" onclick="search_teacher()">搜索</button>
+        	</div>
+		</form>
+	</div>
+	<div id="teacher-list">
+		<h3>教师列表</h3>
+		<div id="teacher-list-content">
+			<table id="teacher-list-table" class="table table-bordered table-striped">
+				<tr class="row">
+					<th class="col-lg-3">教师姓名</th>
+					<th class="col-lg-3">教工号</th>
+					<th class="col-lg-3">班级</th>
+					<th class="col-lg-3">功能</th>
+				</tr>
+				{% for teacher in teacherlist %}
+					<tr class="row" iid={{teacher.teacher_id}}>
+						<td class="col-lg-3">{{teacher.teacher_name}}</td>
+						<td class="col-lg-3">{{teacher.teacher_id}}</td>
+						<td class="col-lg-3">{{teacher.small_class}}</td>
+						<td class="col-lg-3">
+							<button type="button" class="btn btn-primary" id="edit_Button" data-toggle="modal" data-target="#edit-Modal">修改</button>
+							<button type="button" class="btn btn-primary" id="delete_Button">删除</button>
+							<button type="button" class="btn btn-primary" id="detail_Button" data-toggle="modal" data-target="#detail-Modal">详细信息</button>
+						</td>
+					</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+
+	<div class="modal fade" id="detail-Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+		    	<div class="modal-header">
+		        	<h4 class="modal-title" id="myModalLabel">教师详细信息</h4>
+		      	</div>
+		      	<div class="modal-body" id="detail-content">
+		        	
+		      	</div>
+			    <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			    </div>
+		    </div>
+		</div>
+	</div>
+	<div class="modal fade" id="edit-Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+			    <div class="modal-content">
+			      	<div class="modal-header">
+				        <h4 class="modal-title" id="myModalLabel">修改教师信息</h4>
+			      	</div>
+				    <div class="modal-body" id="edit-content">
+				    	
+				    </div>
+			    </div>
+		  </div>
+	</div>
+{% endblock %}

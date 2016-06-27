@@ -1,0 +1,21 @@
+{% extends "adminStaff/base/classroom_base.html"%}
+{% block inner_content%}
+<div class="classRoomAddForm">
+    <form action="" id="classRoomAddForm" method="POST">
+        {% csrf_token %}
+        <h3></h3>
+        <div class= "row">
+            <div class="col-lg-7">
+                <div class="input-group">
+                    <span class="input-group-addon">教室名称</span>
+                    {{addform.room_name}}
+                </div>
+            </div>
+            <button class="btn btn-primary" type = "button" onclick="add_classRoom()">添加</button>
+            <span id="classRoomadd_error_message"></span>
+        </div>
+    </form>
+</div>
+
+<script type='text/javascript' src="{{STATIC_URL}}js/adminStaff/classroom.js"></script>
+{% endblock%}

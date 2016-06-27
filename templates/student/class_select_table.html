@@ -1,0 +1,107 @@
+{% extends "student/base/none_nav_base.html"%}
+{% block inner_content%}
+<link rel="stylesheet" type="text/css" media="screen" href="{{ STATIC_URL }}style/base/table.css" >
+<script type="text/javascript" src="{{STATIC_URL}}js/student/classSelect.js"></script>
+{% if status == 1%}
+<h2>
+  不属于实践班学生，不能实践选课！
+</h2>
+{%else%}
+<form method="post" action="classSelect">
+  {% csrf_token %}
+  <table class="table table-bordered" id="classSelect">
+    <h2> 本学期实践上机选课表</h2>
+    <code> 一周可选两个课时</code>
+    <thead>
+      <tr>
+        <td class="week" colspan="2">#</td>
+        <td class="week">周一</td>
+        <td class="week">周二</td>
+        <td class="week">周三</td>
+        <td class="week">周四</td>
+        <td class="week">周五</td>
+        <td class="week">周六</td>
+        <td class="week">周日</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td rowspan="2" class="period">上午</td>
+        <td class="lesson">第一大节<br>(8:00-9:40)</td>
+        <td><div class="checkbox"><label>
+            {{selectSmallClassForm.class_select_1_1}}
+            ({{class_remain_1_1}})
+          </label></div><!-- /input-group -->
+        </td>
+        <td><div class="checkbox"><label>{{selectSmallClassForm.class_select_2_1}} ({{class_remain_2_1}})</label></div></td>
+        <td><div class="checkbox"><label>{{selectSmallClassForm.class_select_3_1}} ({{class_remain_3_1}})</label></div></td>
+        <td><div class="checkbox"><label>{{selectSmallClassForm.class_select_4_1}} ({{class_remain_4_1}})</label></div></td>
+        <td><div class="checkbox"><label>{{selectSmallClassForm.class_select_5_1}} ({{class_remain_5_1}})</label></div></td>
+        <td><div class="checkbox"><label>{{selectSmallClassForm.class_select_6_1}} ({{class_remain_6_1}})</label></div></td>
+        <td><div class="checkbox"><label>{{selectSmallClassForm.class_select_7_1}} ({{class_remain_7_1}})</label></div></td>
+      </tr>
+      <tr>
+        <td class="lesson">第二大节<br>(10:00-11:40)</td>
+        <td><div class="checkbox"><label>{{selectSmallClassForm.class_select_1_2}} ({{class_remain_1_2}})</label></div></td>
+        <td><div class="checkbox"><label>{{selectSmallClassForm.class_select_2_2}} ({{class_remain_2_2}})</label></div></td>
+        <td><div class="checkbox"><label>{{selectSmallClassForm.class_select_3_2}} ({{class_remain_3_2}})</label></div></td>
+        <td><div class="checkbox"><label>{{selectSmallClassForm.class_select_4_2}} ({{class_remain_4_2}})</label></div></td>
+        <td><div class="checkbox"><label>{{selectSmallClassForm.class_select_5_2}} ({{class_remain_5_2}})</label></div></td>
+        <td><div class="checkbox"><label>{{selectSmallClassForm.class_select_6_2}} ({{class_remain_6_2}})</label></div></td>
+        <td><div class="checkbox"><label>{{selectSmallClassForm.class_select_7_2}} ({{class_remain_7_2}})</label></div></td>
+      </tr>
+      <tr>
+        <td colspan="9">午休</td>
+      </tr>
+
+      <tr>
+        <td rowspan="2" class="period">下午</td>
+        <td class="lesson">第三大节<br>(1:30-3:10)</td>
+        <td><div class="checkbox"><label>{{selectSmallClassForm.class_select_1_3}} ({{class_remain_1_3}})</label></div></td>
+        <td><div class="checkbox"><label>{{selectSmallClassForm.class_select_2_3}} ({{class_remain_2_3}})</label></div></td>
+        <td><div class="checkbox"><label>{{selectSmallClassForm.class_select_3_3}} ({{class_remain_3_3}})</label></div></td>
+        <td><div class="checkbox"><label>{{selectSmallClassForm.class_select_4_3}} ({{class_remain_4_3}})</label></div></td>
+        <td><div class="checkbox"><label>{{selectSmallClassForm.class_select_5_3}} ({{class_remain_5_3}})</label></div></td>
+        <td><div class="checkbox"><label>{{selectSmallClassForm.class_select_6_3}} ({{class_remain_6_3}})</label></div></td>
+        <td><div class="checkbox"><label>{{selectSmallClassForm.class_select_7_3}} ({{class_remain_7_3}})</label></div></td>
+      </tr>
+      <tr>
+        <td class="lesson">第四大节<br>(3:30-5:10)</td>
+        <td><div class="checkbox"><label>{{selectSmallClassForm.class_select_1_4}} ({{class_remain_1_4}})</label></div></td>
+        <td><div class="checkbox"><label>{{selectSmallClassForm.class_select_2_4}} ({{class_remain_2_4}})</label></div></td>
+        <td><div class="checkbox"><label>{{selectSmallClassForm.class_select_3_4}} ({{class_remain_3_4}})</label></div></td>
+        <td><div class="checkbox"><label>{{selectSmallClassForm.class_select_4_4}} ({{class_remain_4_4}})</label></div></td>
+        <td><div class="checkbox"><label>{{selectSmallClassForm.class_select_5_4}} ({{class_remain_5_4}})</label></div></td>
+        <td><div class="checkbox"><label>{{selectSmallClassForm.class_select_6_4}} ({{class_remain_6_4}})</label></div></td>
+        <td><div class="checkbox"><label>{{selectSmallClassForm.class_select_7_4}} ({{class_remain_7_4}})</label></div></td>
+      </tr>
+      <tr>
+        <td colspan="9">晚饭</td>
+      </tr>
+      <tr>
+        <td rowspan="2" class="period">晚上</td>
+        <td class="lesson">第五大节<br>(6:00-7:40)</td>
+        <td><div class="checkbox"><label>{{selectSmallClassForm.class_select_1_5}} ({{class_remain_1_5}})</label></div></td>
+        <td><div class="checkbox"><label>{{selectSmallClassForm.class_select_2_5}} ({{class_remain_2_5}})</label></div></td>
+        <td><div class="checkbox"><label>{{selectSmallClassForm.class_select_3_5}} ({{class_remain_3_5}})</label></div></td>
+        <td><div class="checkbox"><label>{{selectSmallClassForm.class_select_4_5}} ({{class_remain_4_5}})</label></div></td>
+        <td><div class="checkbox"><label>{{selectSmallClassForm.class_select_5_5}} ({{class_remain_5_5}})</label></div></td>
+        <td><div class="checkbox"><label>{{selectSmallClassForm.class_select_6_5}} ({{class_remain_6_5}})</label></div></td>
+        <td><div class="checkbox"><label>{{selectSmallClassForm.class_select_7_5}} ({{class_remain_7_5}})</label></div></td>
+      </tr>
+      <tr>
+        <td class="lesson">第六大节<br>(8:00-9:40)</td>
+        <td><div class="checkbox"><label>{{selectSmallClassForm.class_select_1_6}} ({{class_remain_1_6}})</label></div></td>
+        <td><div class="checkbox"><label>{{selectSmallClassForm.class_select_2_6}} ({{class_remain_2_6}})</label></div></td>
+        <td><div class="checkbox"><label>{{selectSmallClassForm.class_select_3_6}} ({{class_remain_3_6}})</label></div></td>
+        <td><div class="checkbox"><label>{{selectSmallClassForm.class_select_4_6}} ({{class_remain_4_6}})</label></div></td>
+        <td><div class="checkbox"><label>{{selectSmallClassForm.class_select_5_6}} ({{class_remain_5_6}})</label></div></td>
+        <td><div class="checkbox"><label>{{selectSmallClassForm.class_select_6_6}} ({{class_remain_6_6}})</label></div></td>
+        <td><div class="checkbox"><label>{{selectSmallClassForm.class_select_7_6}} ({{class_remain_7_6}})</label></div></td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-primary" id="submit" type="submit">提交</button>
+</form>
+{%endif%}
+{% endblock%}

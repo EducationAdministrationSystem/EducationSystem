@@ -1,0 +1,13 @@
+{% extends "teacher/base/none_nav_base.html"%}
+{% block inner_content%}
+    <div class="container-fluid nopadding">
+        <div class="row nomargin">
+            <div class="col-lg-12 nopadding">
+               <a  class="navbar-button navbar-button-left navbar-button-right"></a> 
+            </div>
+        </div>
+    </div>
+<h3>查看课程评估</h3>
+
+{%include "teacher/widgets/assessment_table.html"%}
+{% endblock%}

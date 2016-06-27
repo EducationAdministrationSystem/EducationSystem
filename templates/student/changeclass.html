@@ -1,0 +1,60 @@
+{% extends "student/base/none_nav_base.html" %}
+{% block inner_content %}
+
+    <form action="#" id="classchangeform" method="POST" class="form-horizontal">
+    {% csrf_token %}
+    <h3>转班申请</h3>
+    <div class= "row">
+        {% for field in classchangeform %}
+        <div class="col-lg-3">
+            <div class="input-group {% if field.errors %} infoerror {% endif%}">
+                <span class="input-group-addon ">{{field.label}}</span>
+            {{field}}
+            </div>
+        </div>
+        {% endfor %}
+        <div class = "col-lg-6">
+            <button class="btn btn-primary" type = "submit">添加</button>
+            <span>{{message}}</span>
+            <!-- <button class="btn btn-danger" type="submit">撤消申请</button>
+            <span></span> -->
+        </div>
+    </div>
+    </form>
+    {% if changeapply %}
+    <table id = "changeclasstable"  class="table ">
+    <thead>
+        <tr>
+          <th>学生</th>
+          <th>原实践班</th>
+          <th>原实践班意见</th>
+          <th>接收实践班</th>
+          <th>接收实践班意见</th>
+          <th>院长意见</th>
+          <th>转入年份</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        {%for  apply in changeapply %}
+          <tr>
+
+              <td id="td-student">{{apply.student}}</td>
+              <td>{{apply.originclass}}</td>
+              <td>{{apply.get_originOK_display}}</td>
+              <td>{{apply.receiveclass}}</td>
+              <td>{{apply.get_receiveOK_display}}</td>
+              <td>{{apply.get_deanOK_display}}</td>
+              <td>{{apply.innovation_grade}}</td>
+              <td>
+                {% if apply.receiveOK == AGREE_CHOICE_UNDFINED %}
+                  <button type="button" class="btn btn-danger" id="btn-delete">撤消</button>
+                {% endif %}
+              </td>
+          </tr>
+          {%  endfor %}
+      </tbody>
+    </table>
+    {% endif %}
+    <script type="text/javascript" src="{{STATIC_URL}}js/student/classchange.js"></script>
+{% endblock %}

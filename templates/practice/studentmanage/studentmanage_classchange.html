@@ -1,0 +1,9 @@
+{% extends "practice/base/student_manage_base.html"%}
+{% block inner_content%}
+<div id="studentmanage">
+    <div id = "div_changetable">
+    {% include "common/student/classchangetable.html" %}
+    </div>
+    {% include "common/student/classchangeform.html" %}
+</div>
+{%endblock%}

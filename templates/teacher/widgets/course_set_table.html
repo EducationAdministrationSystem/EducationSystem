@@ -1,0 +1,40 @@
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <th>课名</th>
+        <th>编号</th>
+        <th>教师</th>
+        <th>周数</th>
+        <th>上课时间</th>
+        <th>地点</th>
+        <th>课容量</th>
+        <th>已选</th>
+        <th>学分</th>
+        <th>学年</th>
+        <th>学期</th>
+        <th>实践班</th>
+        <th>年级</th>
+    </thead>
+    <tbody>
+        {% for course in item_list %}
+        <tr class="show_course_detail" args="{{course.id}}">
+            <td>{{course.course_id.course_name}}</td>
+            <td>{{course.course_id.course_plan_id}}</td>
+            <td>{{course.teacher}}</td>
+            <td>{{course.get_class_week_display}}</td>
+            <td>{{course.get_class_time_display}}</td>
+            <td>{{course.class_place}}</td>
+            <td>{{course.class_capacity}}</td>
+            <td>{{course.int_nelepeo}}</td>
+            <td>{{course.course_id.course_point}}</td>
+            <td>{{course.start_year}}</td>
+            <td>{{course.course_id.get_course_term_display}}</td>
+            <td>{{course.course_id.course_practice}}</td>
+            <td>{{course.course_id.get_course_grade_display}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<div id="paginator">
+{% include "widgets/paginator.html" %}
+</div>

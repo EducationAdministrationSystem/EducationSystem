@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+        <title>创新创业学院在线招新系统</title>
+        <link href="{{STATIC_URL}}bootstrap/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <!--Base JS-->
+        <script type='text/javascript' src="{{STATIC_URL}}bootstrap/assets/js/jquery-1.10.2.min.js"></script>
+        <!-- ajax_csrf-->
+        <script type='text/javascript' src="{{STATIC_URL}}js/ajax_csrf.js"></script>
+        {% load static from staticfiles %}
+        {% load dajaxice_templatetags %}
+        {% dajaxice_js_import %}
+    </head>
+    <body>
+        <div class="container content-container">
+            <div class="container main-content-container">
+                <div>
+                    <h3>创新创业学院实践班报名表</h3>
+                </div>
+                <div class="alert-info" role="alert">当前报名,相同学号重复提交无法覆盖旧信息！</div>
+
+                <form method="post" class="form-horizontal"  enctype="multipart/form-data" action="/recruit/mobile" id="form_registration">
+                    <hr>
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label regis-label">姓名</label>
+                        {{form.student_name}}
+                        {{form.student_name.errors}}
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label regis-label">学号</label>
+                        {{form.student_id}}
+                        {{form.student_id.errors}}
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label regis-label">性别</label>
+                        {{form.sex}}
+                        {{form.sex.errors}}
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label regis-label">电话</label>
+                        {{form.tel_num}}
+                        {{form.tel_num.errors}}
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label regis-label">邮箱</label>
+                        {{form.email}}
+                        {{form.email.errors}}
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label regis-label">学部</label>
+                        {{form.apartment}}
+                        {{form.apartment.errors}}
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label regis-label">专业</label>
+                        {{form.college}}
+                        {{form.college.errors}}
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label regis-label">第一志愿</label>
+                        <select id="id_wish_first" class="form-control regis-input" name="wish_first">
+                            <option value selected="selected">---------</option>
+                            {% for item in practice %}
+                            {% if item.id == 2 %}
+                            <option value="{{item.id}}">{{item}}（录取后分班）</option>
+                            {% elif item.id != 10 and item.id != 11 %}
+                            <option value="{{item.id}}">{{item}}</option>
+                            {% endif %}
+                            {% endfor %}
+                        </select>
+
+                        {{form.wish_first.errors}}
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label regis-label">第二志愿</label>
+                        <select id="id_wish_second" class="form-control regis-input" name="wish_second">
+                            <option value selected="selected">---------</option>
+                            {% for item in practice %}
+                            {% if item.id == 2 %}
+                            <option value="{{item.id}}">{{item}}（录取后分班）</option>
+                            {% elif item.id != 10 and item.id != 11 %}
+                            <option value="{{item.id}}">{{item}}</option>
+                            {% endif %}
+                            {% endfor %}
+                        </select>
+                        {{form.wish_second.errors}}
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label regis-label">自我简介</label>
+                        <hr>
+                        {{form.self_introduction}}
+                    </div>
+                    <div class="div-commit">
+                        <input class="btn btn-default btn-warning dialog-button" name="commit" type="submit" value="报名"></input>
+                    </div>
+                </form>
+                <link rel="stylesheet" type="text/css" media="screen" href="{{ STATIC_URL }}style/recruit/registration.css"/>
+            </div> 
+        </div>
+    </body>
+    <script type="text/javascript" src="{{STATIC_URL}}js/recruit/recruit.js"></script>
+</html>

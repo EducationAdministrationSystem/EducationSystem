@@ -1,0 +1,17 @@
+{% extends "teacher/base/none_nav_base.html"%}
+{% block inner_content%}
+<div id="studentmanage" class="container col-lg-12" style="margin-top:30px;">
+    <div class="col-lg-12" style="font-size:30px;">
+        <div>
+            <a href="/teacher/classChange/origin"><span class="label label-info col-lg-5">转出申请</span></a>
+        </div>
+        <div>
+            <a href="/teacher/classChange/receive"><span class="label label-success col-lg-5" style="margin-left:60px;">转入申请</span></a>
+        </div>
+    </div>
+    <div id = "div_changetable" style="margin-top:20px;" class="col-lg-12">
+    {% include "common/student/classchangetable.html" %}
+    </div>
+    {% include "common/student/classchangeform.html" %}
+</div>
+{% endblock%}

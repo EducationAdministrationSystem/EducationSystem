@@ -1,0 +1,66 @@
+{% extends "adminStaff/base/course_manage_base.html"%}
+{% block inner_content%}
+
+<div id="btn_div">
+  <button class="btn btn-primary" data-toggle="modal" data-target="#course_info_modal">添加课程</button>
+  <button class="btn btn-primary" data-toggle="modal" data-target="#course_importdata_modal">导入课程xls表</button>
+</div>
+
+{% include "adminStaff/widgets/course_filter_form.html" %}
+
+<div class="modal  fade in" id="course_info_modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h2 class="modal-title" id="modal_title">课程信息修改</h2>
+      </div>
+      <div class="modal-body" >
+        <form class="form-inline well" id="course_form">
+          {% csrf_token %}
+          <div class="row" id="course_form_div">
+            {%include "widgets/course/course_form.html"%}
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" id="cancel_change">关闭</button>
+        <button type="button" class="btn btn-primary" data-dismiss="" id="save_course">保存</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal  fade in" id="course_importdata_modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h2 class="modal-title" id="modal_title">课程信息导入</h2>
+      </div>
+      <div class="modal-body" >
+        <form class="form-inline well" id="course_importdata_form" enctype="multipart/form-data" action="/adminStaff/importCourseData"method="post">
+          {% csrf_token %}
+          <div class="row" id="course_form_div">
+            {%include "widgets/course/course_importdata_form.html"%}
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" id="cancel_change">关闭</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div id="course_section" >
+  {%include "widgets/course/course_table.html" %}
+</div>
+<script type='text/javascript' src="{{ STATIC_URL }}js/common/course.js"></script>
+<script type='text/javascript' src="{{ STATIC_URL }}jquery/jquery.form.js"></script>
+<script type='text/javascript' src="{{ STATIC_URL }}bootstrap-multiselect/bootstrap-multiselect.js"></script>
+<link rel="stylesheet" type="text/css" media="screen" href="{{ STATIC_URL }}style/common/course.css" >
+<link rel="stylesheet" type="text/css" media="screen" href="{{ STATIC_URL }}bootstrap-multiselect/bootstrap-multiselect.css" >
+{% endblock%}

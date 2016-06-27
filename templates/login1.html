@@ -1,0 +1,39 @@
+
+{% extends "base/base.html"%}
+{% block before_css%}
+{{block.super}}
+{%endblock%}
+{% block basepage%}
+<body style="background:url(../media/images/login/loginbg.jpg)">
+  <div id="frame">
+    <div id="title" style="background-image:url(../media/images/login/title.jpg)">
+    </div>
+    <div id="content" style="background-image:url(../media/images/login/user.jpg)">
+      <div id="user">
+        <form name="id" action="" method="post" >
+          {% csrf_token %}
+          {% include 'base/_form.html' %}
+          <p><input type="radio" name="id" value="student" checked="checked"/><b></b></p>
+          <p><input type="radio" name="id" value="teacher"/><b></b></p>
+          <p><input type="radio" name="id" value="class"/><b></b></p>
+          <p><input type="radio" name="id" value="manager"/><b></b></p>
+        </form>
+      </div>
+      <div id="login">
+        <form name="dl" action="" method="post">
+          <br/><br/><br/>
+          <p><b>用&nbsp;户&nbsp;名：</b><input type="text" name="user" placeholder="user name" class="text" required/></p>
+          <p><b>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</b><input type="password" name="password" class="text" required/></p>
+          <br/><br/>
+          <div id="anniu">
+            <input type="submit" name="submit" value="" class="button" style="background:url(../media/images/login/login.jpg);float:left;margin-left:5px;"/>
+            <input type="reset" name="reset" value="" class="button" style="background:url(../media/images/login/set.jpg);"/>
+            <input type="button" name="button" value="" class="button" style="background:url(../media/images/login/close.jpg); float:right;margin-right:5px;"/>
+          </div>    
+        </form>
+      </div>
+    </div>
+    <script type="text/javascript" src="{{STATIC_URL}}js/login.js"></script>
+  </div>
+</body>
+{% endblock%}

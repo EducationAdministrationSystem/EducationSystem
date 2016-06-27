@@ -1,0 +1,8 @@
+{% extends "adminStaff/base/none_nav_base.html"%}
+{% block inner_content%}
+<link rel="stylesheet" type="text/css" media="screen" href="{{ STATIC_URL }}style/base/table.css" >
+<div style="margin-top:20px;">
+{{ classChoice}}
+{% include "widgets/course_plan.html" %}
+</div>
+{% endblock%}

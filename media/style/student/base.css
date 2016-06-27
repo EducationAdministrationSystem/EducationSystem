@@ -1,0 +1,13 @@
+.phead {
+    padding-top: 10px;
+    font-weight: bold;
+    padding-left: 3px;
+    font-size: 18px;
+    line-height: normal;
+}
+
+.infoerror{
+    border: 1px solid red;
+    border-radius: 4px;    
+}
+

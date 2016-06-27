@@ -1,0 +1,9 @@
+{% extends "teacher/base/_content.html"%}
+{% block outter_content%}
+    <div class="mynavbar">
+        {% include "teacher/widgets/score_manage_navbar.html" %}
+    </div>
+    <div class="mycontent">
+        {% block inner_content%}{%endblock%}
+    </div>
+{%endblock%}

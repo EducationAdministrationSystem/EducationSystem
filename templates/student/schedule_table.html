@@ -1,0 +1,69 @@
+
+{% extends "student/base/none_nav_base.html"%}
+{% block inner_content%}
+<table class="table table-bordered" id="class_table">
+    
+    <h2> 本学期课程表</h2>
+    <thead>
+        <tr>
+            <td class="week" colspan="2">#</td>
+            <td class="week">周一</td>
+            <td class="week">周二</td>
+            <td class="week">周三</td>
+            <td class="week">周四</td>
+            <td class="week">周五</td>
+            <td class="week">周六</td>
+            <td class="week">周日</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan="2" class="period">上午</td>
+            <td class="lesson">第一大节<br>(8:00-9:40)</td>
+            {%for item in schedule.0 %}
+            <td>{{item|safe}}</td>
+            {%endfor%}
+        </tr>
+        <tr>
+            <td class="lesson">第二大节<br>(10:00-11:40)</td>
+            {%for item in schedule.1 %}
+            <td>{{item|safe}}</td>
+            {%endfor%}
+        </tr>
+        <tr>
+            <td colspan="9">午休</td>
+        </tr>
+        
+        <tr>
+            <td rowspan="2" class="period">下午</td>
+            <td class="lesson">第三大节<br>(1:30-3:10)</td>
+            {%for item in schedule.2 %}
+            <td>{{item|safe}}</td>
+            {%endfor%}
+        </tr>
+        <tr>
+            <td class="lesson">第四大节<br>(3:30-5:10)</td>
+            {%for item in schedule.3 %}
+            <td>{{item|safe}}</td>
+            {%endfor%}
+        </tr>
+        <tr>
+            <td colspan="9">晚饭</td>
+        </tr>
+        <tr>
+            <td rowspan="2" class="period">晚上</td>
+            <td class="lesson">第五大节<br>(6:00-7:40)</td>
+            {%for item in schedule.4 %}
+            <td>{{item|safe}}</td>
+            {%endfor%}
+        </tr>
+        <tr>
+            <td class="lesson">第六大节<br>(8:00-9:40)</td>
+            {%for item in schedule.5%}
+            <td>{{item|safe}}</td>
+            {%endfor%}
+        </tr>
+    </tbody>
+
+</table>
+{% endblock%}

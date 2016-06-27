@@ -1,0 +1,13 @@
+{% extends "adminStaff/base/none_nav_base.html"%}
+{% block inner_content%}
+<link rel="stylesheet" type="text/css" media="screen" href="{{ STATIC_URL }}style/base/table.css" >
+{{ classChoice }}
+<form method="post" id="smallClass">
+  {% csrf_token %}
+  <div id="smallClassTable">
+    {% include "adminStaff/widgets/classRemainTable.html" %}
+  </div>
+</form>
+<div id="debug"></div>
+<script type='text/javascript' src="{{STATIC_URL}}js/common/classRemain.js"></script>
+{% endblock%}

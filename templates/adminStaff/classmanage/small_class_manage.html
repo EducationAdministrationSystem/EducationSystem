@@ -1,0 +1,25 @@
+{% extends "adminStaff/base/class_manage_base.html"%}
+
+{% block inner_content%}
+	<div class="add_class" id="add_class">
+		<form action="" method="POST" id="smallclass-add-form">
+			{% csrf_token %}
+			<h3>添加班级</h3>
+
+	 			<div class="col-lg-3">
+	 				<div class="input-group">
+	 					<span class="input-group-addon">班级全称</span>
+	 					{{form.class_name}}
+	 				</div>
+	 			</div>
+	 			<div class="col-lg-3">
+                	<div class="input-group">
+                    	<span class="input-group-addon">实践班</span>
+                		{{form.practice_class}}
+               		</div>
+            	</div>
+	            <button class="btn btn-primary" type = "button" onclick="add_smallclass()">添加</button>
+	            <span id="smallclass-add-message"></span>
+		</form>
+	</div>
+{%endblock%}

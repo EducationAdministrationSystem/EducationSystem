@@ -1,0 +1,14 @@
+{% extends "adminStaff/base/_content.html"%}
+
+{% block outter_content%}
+	<div class="mynavbar">
+        {% include "adminStaff/widgets/class_manage_navbar.html" %}
+    </div>
+    <div class="mycontent">
+        {% block inner_content%}{%endblock%}
+    </div>
+{%endblock%}
+
+{% block endjs %}
+	<script type="text/javascript" src="{{STATIC_URL}}js/class/classmanage.js"></script>
+{% endblock %}

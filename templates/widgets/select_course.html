@@ -1,0 +1,78 @@
+
+{% if message%}
+<h1>
+    {{message}}
+</h1>
+{%else%}
+<h1>
+    本学期选课
+</h1>
+<div id="select_course">
+    <table class="table table-hover table-striped">
+        <tr>
+            <th>课程ID</th>
+            <th>课程名称</th>
+            <th>任课教师</th>
+            <th>学分</th>
+            <th>上课周</th>
+            <th>上课时间</th>
+            <th>上课地点</th>
+            <th>理论学时</th>
+            <th>实践学时</th>
+            <th>课容量剩余</th>
+            <th>选择</th>
+        </tr>
+        {% for course in course_list%}
+        <tr iid={{course.id}}>
+            <td>{{course.course_id.course_plan_id}}</td>
+            <td>{{course.course_id.course_name}}</td>
+            <td><a href="/{{role}}/teacherselfinfo/{{course.teacher.teacher_id}}">{{course.teacher}}</a></td>
+            <td>{{course.course_id.course_point}}</td>
+            <td>{{course.get_class_week_display}}</td>
+            <td>{{course.get_class_time_display}}</td>
+            <td>{{course.class_place}}</td>
+            <td>{{course.theory_periods}}</td>
+            <td>{{course.practice_periods}}</td>
+            <td>{{course.remaining}}</td>
+            <td>
+                {% if course.selected == 1%}
+                <span class="label label-success">已选择</span>
+                {%else%}
+                <input type="checkbox" class="course_checkbox" {%ifequal course.remaining  0%}disabled="true"{%endifequal%}>
+                {%endif%}
+            </td>
+        </tr>
+        {%endfor%}
+    </table>
+</div>
+<div>
+    <br>
+    <div class = "col-lg-10">
+        <button class="btn btn-primary "  id="select_confirm">确认选课</button>
+    </div>
+</div>
+ <div class="modal fade"  role="dialog" id="alert_info_modal">
+
+      <div class="modal-dialog">
+      
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <a class="close" data-dismiss="modal">×</a>
+            <h3>信息提示</h3>            
+          </div>
+
+          <div class="modal-body">
+              <h3 id="info_alert"></h3>
+          </div>
+
+          <div class="modal-footer">
+            <a class="btn btn-primary" data-dismiss="modal" >确定</a>
+          </div>
+
+        </div>
+      </div>
+  </div>
+
+
+{%endif%}

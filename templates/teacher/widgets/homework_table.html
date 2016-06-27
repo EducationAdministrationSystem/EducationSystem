@@ -1,0 +1,56 @@
+{%if course.homework_list%}
+    <table class="table table-bordered">
+        <thead>            
+          <tr>
+            <th>作业次序</th>
+            <th>作业名称</th>
+            <th>作业要求</th>
+            <th>作业截至时间</th>
+            <th>是否是期末作业</th>
+            <th>修改作业 </th>
+            <th>已提交作业记录</th>
+          </tr>
+        </thead>
+
+
+        <tbody>
+
+          {%for homework in course.homework_list%}
+          <tr>
+            <td>{{homework.homework_rank}}</td>
+            <td>{{homework.name}}</td>
+            <td>
+              <button type="button" class="btn btn-success viewHomeworkRequired" 
+              data-toggle="modal"
+              data-target="#required_modal"
+              homework-required = "{{homework.required}}"
+              >查看作业要求 
+              </button>
+              
+            </td>
+            <td>{{homework.deadline|date:"Y-m-d H:i"}}</td>
+            <td is_final= {{homework.is_final}}>
+              {%if homework.is_final%}
+                  是
+              {%else%}
+                  否
+              {%endif%}
+            </td>
+            <td>  
+              <button type="button" class="btn btn-success modifyHomework" data-toggle="modal" 
+                  data-target="#homework_modal"
+                  hid = "{{homework.id}}"
+                  >修改</button>
+            </td>
+
+            <td>
+              <button type="button" class="btn btn-success viewHomeworkSubmit" hid = "{{homework.id}}">查看</button>
+            </td>
+
+          </tr>
+          {%endfor%}
+        </tbody>
+    </table>
+{%else %}
+    <h3> 您还未发布作业</h3>
+{%endif%}

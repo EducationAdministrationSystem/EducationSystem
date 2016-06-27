@@ -1,0 +1,26 @@
+{% extends "student/base/none_nav_base.html"%}
+{% block inner_content%}
+<h1>
+    {{practice}}培养计划
+</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>课程id</th>
+            <th>课程名</th>
+            <th>年级</th>
+            <th>学期</th>
+            <th>学分</th>
+        </tr>
+    </thead>
+    {% for item in courseplanlist%}
+    <tr iid="{{item.course_plan_id}}">
+        <td>{{item.course_plan_id}}</td>
+        <td>{{item.course_name}}</td>
+        <td>{{item.course_grade}}</td>
+        <td>{{item.course_term}}</td>
+        <td>{{item.course_point}}</td>
+    </tr>
+    {% endfor%}
+</table>
+{%endblock%}

@@ -1,0 +1,30 @@
+{% if item_list %}
+<table id="student_table" class="table table-bordered">
+    <thead>
+        <tr>
+          <th>#</th>
+          <th>姓名</th>
+          <th>学号</th>
+          <th>大班</th>
+          <th>小班</th>
+          <th>年份</th>
+        </tr>
+      </thead>
+      <tbody>
+        {%for  stu in item_list %}
+        {% cycle 'active' 'success' as rowcolors silent %}
+          <tr  class= "{{ rowcolors }} ">
+              <td>{{forloop.counter }}</td>
+              <td><a href="/{{role}}/studentselfinfo/{{stu.baseinfo_studentid}}">{{stu.baseinfo_name}}</a></td>
+              <td>{{stu.baseinfo_studentid}}</td>
+              <td>{{stu.small_class.practice_class}}</td>
+              <td>{{stu.small_class}}</td>
+              <td>{{stu.innovation_grade}}</td>
+          </tr>
+          {%  endfor %}
+      </tbody>
+</table>
+<div id = "alloc_paginator" class="pull-right">
+{% include "widgets/paginator.html" %}
+</div>
+{%  endif %}

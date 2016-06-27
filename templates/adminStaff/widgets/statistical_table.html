@@ -1,0 +1,29 @@
+
+    <h2>选课人数统计</h2>
+    <table class="table table-bordered" id="statistical_table">
+        <thead>
+            <tr>
+                <td>实践班</td>
+                {%for term in terms%}
+                <td>{{term.school_year}}{{term.term.1}}</td>
+                {%endfor%}
+            </tr>
+        </thead>
+        <tbody>
+            {% for class in statistical%}
+            <tr>
+                <td>{{class.name}}</td>
+            {%for people in class.selectors%}
+            <td>{{people}}</td>
+            {% endfor%}
+            </tr>
+            {%endfor%}
+            <tr>
+                <td>总数</td>
+                {%for term in terms%}
+                <td>{{term.count}}</td>
+                {%endfor%}
+            </tr>
+        </tbody>
+
+    </table>

@@ -1,0 +1,12 @@
+{% extends "adminStaff/base/class_info_base.html"%}
+{% block inner_content%}
+<button class="btn btn-primary" id="export_all">导出所有成绩</button>
+{% include "adminStaff/widgets/class_filter_form.html" %}
+
+<div id="course_set_table">
+</div>
+<div id="score_info_table">
+</div>
+<script type="text/javascript" src="{{STATIC_URL}}js/teacher/scoreList.js"></script>
+
+{% endblock%}

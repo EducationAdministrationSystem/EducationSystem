@@ -1,0 +1,39 @@
+{% extends "recruit/base/none_nav_base.html"%}
+{% block inner_content%}
+<div class="container content-container">
+  <div class="container main-content-container">
+      <div style="margin-left: 24%;">
+        <h1>创新课程注册表</h1>
+      </div>
+
+    <form method="post" class="form-horizontal"  enctype="multipart/form-data" action="." id="form_registration" style="width:600px;margin-left:15%;margin-bottom:70px">
+      <hr>
+      {% csrf_token %}
+      <div class="form-group">
+        <label class="col-sm-2 control-label regis-label">姓名</label>
+        <input name="student_name" maxlength="20" placeholder="姓名" type="text" class="form-control regis-input" id="id_student_name">
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label regis-label">学号</label>
+        <input name="student_id" maxlength="20" placeholder="学号" type="text" class="form-control regis-input" id="id_student_id">
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label regis-label">性别</label>
+        <select id="id_sex" class="form-control regis-input" name="baseinfo_sex">
+            <option value="male">男</option>
+            <option value="female">女</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label regis-label">电话</label>
+        <input name="tel_num" maxlength="20" placeholder="电话" type="text" class="form-control regis-input" id="id_tel_num">
+      </div>
+      <div >
+        <input class="btn btn-default btn-warning dialog-button" name="commit" type="button" id="commit_button" value="报名"></input>
+      </div>
+    </form>
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ STATIC_URL }}style/recruit/registration.css"/>
+  </div> 
+</div>
+<script type="text/javascript" src="{{STATIC_URL}}js/recruit/registration.js"></script>
+{% endblock%}

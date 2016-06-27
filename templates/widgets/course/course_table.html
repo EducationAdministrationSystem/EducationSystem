@@ -1,0 +1,55 @@
+<table class="table table-bordered table-hover">
+    <thead>
+         <tr>
+           <th>课名</th>
+           <th>课程号</th>
+           <th>教师</th>
+           <th>上课周</th>
+           <th>上课时间</th>
+           <th>上课地点</th>
+           <th>总学时</th>
+           <th>实践学时</th>
+           <th>理论学时</th>
+           <th>课容量</th>
+           <th>已选人数</th>
+           <th>学分</th>
+           <th>年级</th>
+           <th>学年</th>
+           <th>学期</th>
+           <th>实践班</th>
+           {% if show_delete %}
+           <th>操作</th>
+           {% endif %}
+         </tr>
+    </thead>
+    <tbody>
+      {% for item in item_list %}
+      <tr>
+        <td>{{item.course_id}}</td>
+        <td>{{item.course_id.course_plan_id}}</td>
+        <td>{{item.teacher}}</td>
+        <td>{{item.get_class_week_display}}</td>
+        <td>{{item.get_class_time_display}}</td>
+        <td>{{item.class_place}}</td>
+        <td>{{item.practice_periods|add:item.theory_periods}}</td>
+        <td>{{item.practice_periods}}</td>
+        <td>{{item.theory_periods}}</td>
+        <td>{{item.class_capacity}}</td>
+        <td>{{item.int_nelepeo}}</td>
+        <td>{{item.course_id.course_point}}</td>
+        <td>{{item.course_id.get_course_grade_display}}</td>
+        <td>{{item.start_year}}</td>
+        <td>{{item.course_id.get_course_term_display}}</td>
+        <td>{{item.course_id.course_practice}}</td>
+        {% if show_delete %}
+        <td>
+          <button class="btn btn-danger" uid={{item.id}}>删除</button>
+        </td>
+        {% endif %}
+      </tr>
+      {% endfor%}
+    </tbody>
+</table>
+<div id="course_paginator" class="course_paginator">
+  {%include "widgets/paginator.html"%}
+</div>

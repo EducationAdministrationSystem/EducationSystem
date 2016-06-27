@@ -1,0 +1,18 @@
+{% extends "adminStaff/base/classroom_base.html"%}
+{% block inner_content%}
+<div style="margin-top:20px;">
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ STATIC_URL }}style/base/table.css" >
+    {{classroomChoice}}
+    <div id="classroom_table">
+        {%include "adminStaff/widgets/classroom_schedule.html"%}
+    </div>
+
+    <div>
+        <br>
+        <div class = "col-lg-10">
+            <button class="btn btn-primary " id="print_confirm">打印课表</button>
+        </div>
+    </div>
+</div>
+<script type='text/javascript' src="{{STATIC_URL}}js/adminStaff/classroom.js"></script>
+{% endblock%}

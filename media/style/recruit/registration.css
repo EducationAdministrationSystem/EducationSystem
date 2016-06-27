@@ -1,0 +1,20 @@
+.dialog-button{
+    height: 50px;
+    width: 300px;
+    font-size: 25px !important;
+}
+
+.regis-input{
+    height: 45px;
+    width: 300px;
+    border-style: solid;
+    font-family: cursive;
+    font-size: normal;
+}
+.regis-label{
+    text-align: left !important;
+}
+
+.div-commit{
+    text-align: center;
+}

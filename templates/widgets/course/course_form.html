@@ -1,0 +1,101 @@
+<div class="col-lg-6">
+  <div class="input-group">
+    <span class="input-group-btn">
+      <button class="btn btn-default" type="button">{{course_form.course_id.label}}</button>
+    </span>
+    {{course_form.course_id}}
+  </div>
+  <div id="alert-bar" style="color:red">
+    {{ course_form.course_id.errors }}
+  </div>
+
+  <div class="input-group">
+    <span class="input-group-btn">
+      <button class="btn btn-default" type="button">{{course_form.teacher.label}}</button>
+    </span>
+    {{course_form.teacher}}
+  </div>
+  <div id="alert-bar" style="color:red">
+    {{ course_form.teacher.errors }}
+  </div>
+
+  <div class="input-group">
+    <span class="input-group-btn">
+      <button class="btn btn-default" type="button">{{course_form.practice_periods.label}}</button>
+    </span>
+    {{course_form.practice_periods}}
+  </div>
+  <div id="alert-bar" style="color:red">
+    {{ course_form.practice_periods.errors }}
+  </div>
+
+  <div class="input-group">
+    <span class="input-group-btn">
+      <button class="btn btn-default" type="button">{{course_form.theory_periods.label}}</button>
+    </span>
+    {{course_form.theory_periods}}
+  </div>
+  <div id="alert-bar" style="color:red">
+    {{ course_form.theory_periods.errors }}
+  </div>
+
+  <div class="input-group">
+    <span class="input-group-btn">
+      <button class="btn btn-default" type="button">{{course_form.class_capacity.label}}</button>
+    </span>
+    {{course_form.class_capacity}}
+  </div>
+  <div id="alert-bar" style="color:red">
+    {{ course_form.class_capacity.errors }}
+  </div>
+
+</div>
+<div class="col-lg-6">
+  <div class="input-group">
+    <span class="input-group-btn">
+      <button class="btn btn-default" type="button">{{course_form.class_week.label}}</button>
+    </span>
+    {{course_form.class_week}}
+  </div>
+  <div id="alert-bar" style="color:red">
+    {{ course_form.class_week.errors }}
+  </div>
+
+  <div class="input-group">
+    <span class="input-group-btn">
+      <button class="btn btn-default" type="button">{{course_form.class_time.label}}</button>
+    </span>
+    {{course_form.class_time}}
+  </div>
+  <div id="alert-bar" style="color:red">
+    {{ course_form.class_time.errors }}
+  </div>
+
+  <div class="input-group">
+    <span class="input-group-btn">
+      <button class="btn btn-default" type="button">{{course_form.class_place.label}}</button>
+    </span>
+    {{course_form.class_place}}
+  </div>
+  <div id="alert-bar" style="color:red">
+    {{ course_form.class_place.errors }}
+  </div>
+
+  <div class="input-group">
+    <span class="input-group-btn">
+      <button class="btn btn-default" type="button">{{course_form.course_to_class.label}}</button>
+    </span>
+    {{course_form.course_to_class}}
+  </div>
+
+
+  <div class="input-group">
+    <span class="input-group-btn">
+      <button class="btn btn-default" type="button">{{course_form.start_year.label}}</button>
+    </span>
+    {{course_form.start_year}}
+  </div>
+  <div id="alert-bar" style="color:red">
+    {{ course_form.start_year.errors }}
+  </div>
+</div>

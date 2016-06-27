@@ -1,0 +1,56 @@
+{% extends "president/base/none_navbar_base.html"%}
+{% block inner_content%}
+<link rel="stylesheet" href="{{ STATIC_URL   }}bootstrap-datepicker/css/bootstrap-datetimepicker.css" type="text/css" media="screen" />
+<form class="form-inline" method="POST">
+    {% csrf_token %}
+<div class="input-group">
+    <input id="course_day" name="course_day" type="text" class="form-control" value="{{date|date:'Y-m-d'}}">
+    <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+</div>
+<button type="submit" class="btn btn-primary">查询</button>
+</form>
+<h3>
+    今天课程信息
+</h3>
+<table class="table table-hover table-striped">
+    <tr>
+        <th>课程ID</th>
+        <th>课程名称</th>
+        <th>任课教师</th>
+        <th>学分</th>
+        <th>上课周</th>
+        <th>上课时间</th>
+        <th>上课地点</th>
+        <th>理论学时</th>
+        <th>选课人数</th>
+    </tr>
+    {% for course in course_list%}
+    <tr iid={{course.id}}>
+        <td>{{course.course_id.course_plan_id}}</td>
+        <td>{{course.course_id.course_name}}</td>
+        <td>{{course.teacher}}</td>
+        <td>{{course.course_id.course_point}}</td>
+        <td>{{course.get_class_week_display}}</td>
+        <td>{{course.get_class_time_display}}</td>
+        <td>{{course.class_place}}</td>
+        <td>{{course.theory_periods}}</td>
+        <td>{{course.int_nelepeo}}</td>
+    </tr>
+    {%endfor%}
+</table>
+<script type='text/javascript' src="{{STATIC_URL}}bootstrap-datepicker/js/bootstrap-datetimepicker.js"></script>
+<script>
+    $("#course_day").datetimepicker({
+        format:'yyyy-mm-dd',
+        weekStart:1,
+        todayBtn: 1,
+        autoclose: 1,
+        taodayHighlight:1,
+        startView:2,
+        forceParse:0,
+        minView:2
+
+
+    });
+</script>
+{%endblock%}

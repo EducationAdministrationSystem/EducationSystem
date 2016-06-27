@@ -1,0 +1,35 @@
+{% extends "practice/base/self_info_base.html"%}
+{% block inner_content%}
+  
+  <div class="container-fluid nopadding">
+        <div class="row nomargin">
+            <div class="col-lg-12 nopadding">
+               <a  class="navbar-button navbar-button-left navbar-button-right"></a> 
+            </div>
+        </div>
+    </div>
+    
+  <h2>对课程进行评估</h2>
+  <br/>
+
+  <div>
+    {%include "practice/widgets/check_comment.html"%}
+  </div>
+
+<div class="modal fade" id="check_comment" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">该课程所有评论</h3>
+      </div>
+      <div class="modal-body" id="comment_content">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script type='text/javascript' src="{{STATIC_URL}}js/practice/check_comment.js"></script>
+{% endblock%}

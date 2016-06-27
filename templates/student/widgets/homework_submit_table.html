@@ -1,0 +1,52 @@
+{%if homework_submit_list%}
+    <table class="table table-bordered">
+        <thead>            
+          <tr>
+            <th>学生</th>
+            <th>作业文件</th>
+            <th>作业提交时间</th>
+            <th>作业评分</th>
+            <th>评分</th>
+            
+          </tr>
+
+        </thead>
+
+
+        <tbody>
+
+          {%for hs in homework_submit_list%}
+          <tr>
+            <td>{{hs.student}}</td>
+            <td><a href="{{hs.homework_file.url}} "class='btn btn-primary'> 下载作业</a> </td>
+            <td>{{hs.submit_time|date:"Y-m-d H:i"}}</td>
+            <td>
+                
+              {%if hs.score%}{{hs.score}}{%else%}还未评分{%endif%}
+            </td>
+
+            <td><button type="button" class="btn btn-success modifyScore" data-toggle="modal" 
+              data-target="#score_modal"
+              hsid = "{{hs.id}}"
+
+              {%if hs.score%}
+                score = "{{hs.score}}"
+              {%else%}还未评分{%endif%}
+                score = ""
+              >评分</button>
+            </td>
+
+
+
+          </tr>
+          {%endfor%}
+
+        </tbody>
+    </table>
+
+{%else%}
+    <h3> 还未有学生上传作业</h3>
+
+
+
+{%endif%}

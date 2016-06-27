@@ -1,0 +1,35 @@
+{% if item_list %}
+<table class="table table-bordered table-hover">
+    <thead>
+        <th>学号</th>
+        <th>姓名</th>
+        <th>实践班</th>
+        <th>性别</th>
+        <th>学部</th>
+        <th>院系</th>
+        <th>专业</th>
+        <th>班级</th>
+        <th>电话</th>
+    </thead>
+    <tbody>
+        {% for student in item_list %}
+        <tr class="show_student_detail" args="{{student.baseinfo_studentid}}">
+            <td>{{student.baseinfo_studentid}}</td>
+            <td>{{student.baseinfo_name}}</td>
+            <td>{{student.small_class.practice_class}}</td>
+            <td>{{student.get_baseinfo_sex_display}}</td>
+            <td>{{student.get_collegeinfo_apartment_display}}</td>
+            <td>{{student.get_collegeinfo_college_display}}</td>
+            <td>{{student.collegeinfo_major}}</td>
+            <td>{{student.collegeinfo_class}}</td>
+            <td>{{student.contactinfo_telephone}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<div id="paginator">
+{% include "widgets/paginator.html" %}
+</div>
+{% else %}
+    <h3>没有学生信息匹配搜索关键字！</h3>
+{% endif %}

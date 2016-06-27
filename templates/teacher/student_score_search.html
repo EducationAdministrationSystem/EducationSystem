@@ -1,0 +1,16 @@
+{% extends "teacher/base/self_info_base.html"%}
+{% block inner_content%}
+
+<br/>
+<div class="form-inline" role="form">
+    学号 / 姓名：<input type="text" class="form-control" id="id_score_search_input"></input>
+    <button class="btn btn-primary" id="id_score_search_button">搜索</button>
+
+</form>
+<div id="student_set_table">
+</div>
+<div id="student_score_table">
+</div>
+<script type="text/javascript" src="{{STATIC_URL}}js/teacher/scoreSearch.js"></script>
+
+{% endblock%}

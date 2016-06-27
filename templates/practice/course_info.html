@@ -1,0 +1,9 @@
+{% extends "practice/base/none_nav_base.html"%}
+{% block inner_content%}
+<div id="course_section" >
+  {%include "widgets/course/course_table.html" %}
+</div>
+<script type='text/javascript' src="{{ STATIC_URL }}js/common/course.js"></script>
+<link rel="stylesheet" type="text/css" media="screen" href="{{ STATIC_URL }}style/common/course.css" >
+<link rel="stylesheet" type="text/css" media="screen" href="{{ STATIC_URL }}bootstrap-multiselect/bootstrap-multiselect.css" >
+{% endblock%}

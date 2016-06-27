@@ -1,0 +1,19 @@
+{% extends "base/_base.html"%}
+{% block before_css%}
+{{block.super}}
+<link rel="stylesheet" href="{{STATIC_URL}}style/teacher/base.css">
+{%endblock%}
+{%block menu_list%}
+{% include "teacher/widgets/menu_list.html"%}
+{%endblock%}
+{% block main_content%}
+<div class="main-content">
+    {% block outter_content%}{%endblock%}
+</div>
+{% endblock%}
+
+{% block endjs %}
+	<script type="text/javascript" src="{{STATIC_URL}}js/teacher/selfinfo.js"></script>
+{% endblock %}
+
+

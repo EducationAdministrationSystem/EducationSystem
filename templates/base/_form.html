@@ -1,0 +1,33 @@
+<!-- Bootstrap compatible form -->
+{% if form.non_field_errors %}
+<div class="row alert alert-error">
+  {{ form.non_field_errors }}
+</div>
+{% elif identityerror %}
+<div class="row alert alert-error">
+  {{ identityerror }}
+</div>
+{% else%}
+<div class= "row">
+</div>
+{% endif %}
+<fieldset id="loginfieldset">
+  {% for field in form %}
+  <div  class="form-group {% if field.errors %}error{% endif %}">
+    <p><label class="control-label col-lg-3" >
+      {% if field.field.required %}{{ field.label }} 
+      {% else %} {{ field.label_tag }}  {% endif %}
+    </label>
+    <div class="col-lg-9">
+      {{ field }}
+      <p class="help-block">{{ field.help_text }}</p>
+      {% for error in field.errors %}
+      <span class="help-inline"><b>{{ error }}</b></span>
+      {% endfor %}
+    </div>
+    </p>
+  </div>
+  {% endfor %}
+</fieldset>
+
+

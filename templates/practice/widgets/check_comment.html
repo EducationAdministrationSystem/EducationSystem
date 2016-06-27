@@ -1,0 +1,25 @@
+<tbody>
+    <table class="table table-hover table-striped" id="comment_table">
+      <tr>
+        <th>序号</th>
+        <th>课程ID</th>
+        <th>课程名称</th>
+        <th>教师ID</th>
+        <th>任课教师</th>
+        <th>记录状态</th>
+      </tr>
+      {% for c in course_list %}
+      <tr iid = {{ c.id }}>
+        <td>{{forloop.counter}}</td>
+        <td>{{c.course_id}}</td>
+        <td>{{c.course_id.course_name}}</td>
+        <td>{{c.teacher.userid}}
+        <td>{{c.teacher.teacher_name}}</td>
+        <td>
+          <button type="button" class="btn btn-success modifyHomework" id="lookup_comment" data-toggle="modal"  data-target="#check_comment">查看课程评论</button>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  </tbody>
+<script type='text/javascript' src="{{STATIC_URL}}js/practice/check_comment.js"></script>

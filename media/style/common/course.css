@@ -1,0 +1,17 @@
+#course_form .input-group{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width:220px!important;
+}
+#course_form select{
+    width:140px;
+}
+#course_form span button{
+    width:82px;
+}
+#course_filter_form button{
+    margin-left:20px;
+}
+#course_filter_form input{
+    width:120px;
+}

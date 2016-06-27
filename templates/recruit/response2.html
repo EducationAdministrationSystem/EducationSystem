@@ -1,0 +1,29 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		<title>创新创业学院在线招新系统</title>
+		<link href="{{STATIC_URL}}bootstrap/assets/css/bootstrap.min.css" rel="stylesheet" />
+		<!--Base JS-->
+		<script type='text/javascript' src="{{STATIC_URL}}bootstrap/assets/js/jquery-1.10.2.min.js"></script>
+		<!-- ajax_csrf-->
+		<script type='text/javascript' src="{{STATIC_URL}}js/ajax_csrf.js"></script>
+		{% load static from staticfiles %}
+		{% load dajaxice_templatetags %}
+		{% dajaxice_js_import %}
+	</head>
+	<body>
+		<div class="container content-container">
+			<div class="container main-content-container">
+
+				<div style="text-align:center;margin-top:100px">
+				<img src="{{STATIC_URL}}images/success_128.png"></img>
+				<p>报名成功！<span id="time">3</span>秒后跳转...</p>
+				<p>后续详情请关注创新创业网站首页公告！</p>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="{{STATIC_URL}}js/recruit/delay.js"></script>
+	</body>
+</html>
