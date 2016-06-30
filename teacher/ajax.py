@@ -40,6 +40,10 @@ def getCourseMembers(request, course_id):
         if tmp_score:
             select.score = tmp_score[0]
         else:
+            # score = Score()
+            # score.select_obj = select
+            # score.save()
+            # select.score = score
             continue
         # select.score = Score.objects.get(select_obj = select)        
         select.homework = getHomeworkScore(select.student, select.course)
@@ -125,8 +129,10 @@ def scoreCheckIn(request, select_id, var_1, var_2, var_3):
     message = ""
     select = SelectCourse.objects.get(id = select_id)
     try:
+        print (var_1, var_2, var_3)
         var_1, var_2, var_3 = map(int, (var_1, var_2, var_3))
     except:
+        print "dddddddddd"
         message = "error"
         return simplejson.dumps({"message": message, })
     try:
