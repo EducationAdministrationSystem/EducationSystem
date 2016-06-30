@@ -25,7 +25,6 @@ function getStatisticsCallBack(data){
     $("#statistics").html(data);
 }
 $("#course_select").change(function(){
-    alert("dddddddd");
     var course_id = $(this).val();
     Dajaxice.teacher.getCourseMembers(getCourseMembersCallBack, {"course_id": course_id,});
 });
