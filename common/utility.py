@@ -183,7 +183,8 @@ def selectCourseContext(request,student):
     # course_list=Course.objects.filter(course_to_class=student.small_class,course_id__course_term=admin_setting.school_term,start_year=school_year)
     course_list=Course.objects.filter(course_to_class=student.small_class,start_year=school_year)
     course_list = course_list.filter(Q(course_id__course_term=admin_setting.school_term)|Q(course_id__course_term=-1))
-    course_list=course_list.filter(Q(course_id__course_grade=grade)|Q(course_id__course_grade=-1))
+    # course_list=course_list.filter(Q(course_id__course_grade=grade)|Q(course_id__course_grade=-1))
+    course_list=course_list.filter(Q(course_id__course_grade__lte=grade)|Q(course_id__course_plan_id__in=GRADE_IGNORE))
     if course_list.count()==0 and message == "":
         message=u"没有可选择课程！"
 
