@@ -129,10 +129,8 @@ def scoreCheckIn(request, select_id, var_1, var_2, var_3):
     message = ""
     select = SelectCourse.objects.get(id = select_id)
     try:
-        print (var_1, var_2, var_3)
         var_1, var_2, var_3 = map(int, (var_1, var_2, var_3))
     except:
-        print "dddddddddd"
         message = "error"
         return simplejson.dumps({"message": message, })
     try:

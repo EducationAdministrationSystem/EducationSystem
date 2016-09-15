@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 
 student_list = {}
 try:
-    rfile = open("../internet.txt")
+    rfile = open("../df.txt")
     for line in rfile:
         s=line.strip().split('\t')
         # student_list.append(int(s[1]))
@@ -17,12 +17,12 @@ except Exception, e:
     print e
     pass
 
-print student_list
 count = len(student_list)
-schoolyear = SchoolYear.objects.filter(school_year="2015-2016")
+schoolyear = SchoolYear.objects.filter(school_year="2016-2017")
 schoolyear=schoolyear[0]
-
-course = Course.objects.filter(course_id__course_plan_id="1160165070")
+print schoolyear
+course = Course.objects.filter(course_id__course_plan_id="1160165090")
+print course
 course=course[0]
 course.int_nelepeo = count
 course.save()
@@ -30,7 +30,6 @@ course.save()
 for stu_num in student_list:
     try:
         student = StudentProfile.objects.get(baseinfo_studentid=str(stu_num))
-        
     except:
         try:
             user=User.objects.create_user(username=stu_num,password=stu_num)
@@ -42,10 +41,9 @@ for stu_num in student_list:
         student.baseinfo_name=student_list[stu_num]
         student.baseinfo_studentid=str(stu_num)
         student.save()
-    
     if SelectCourse.objects.filter(student=student,course=course).count()==0:
         selectcourse_obj = SelectCourse()
-        selectcourse_obj.student = student 
+        selectcourse_obj.student = student
         selectcourse_obj.course = course
         selectcourse_obj.save()
     else:
@@ -54,7 +52,3 @@ for stu_num in student_list:
         score = Score()
         score.select_obj = selectcourse_obj
         score.save()
-
-
-
-
