@@ -148,9 +148,9 @@ def get_score_xls_path(request,head_list,obj_set,excelname, func_str = "get_expo
     if extra_foot_data != None:
         add_foot_data(xls_obj, workbook ,extra_foot_data,row)
 
-    save_path = os.path.join(TMP_FILES_PATH, "%s%s.xls" % (str(datetime.date.today().year), u"年创新实验学院"+excelname))
+    save_path = os.path.join(TMP_FILES_PATH, "%s%s.xls" % (str(datetime.date.today().year), u"年创新创业学院"+excelname))
     workbook.save(save_path)
-    ret_path = os.path.join(MEDIA_URL+"tmp", "%s%s.xls" % (str(datetime.date.today().year), u"年创新实验学院"+excelname))
+    ret_path = os.path.join(MEDIA_URL+"tmp", "%s%s.xls" % (str(datetime.date.today().year), u"年创新创业学院"+excelname))
     return ret_path
 
 def get_xls_path(request,head_list,obj_set,excelname, func_str = "get_export_data",extra_data = None):
@@ -170,9 +170,9 @@ def get_xls_path(request,head_list,obj_set,excelname, func_str = "get_export_dat
         for i in range(num):
             xls_obj.write(row, i, unicode(item_datas[i]), style)
         row += 1
-    save_path = os.path.join(TMP_FILES_PATH, "%s%s.xls" % (str(datetime.date.today().year), u"年创新实验学院"+excelname))
+    save_path = os.path.join(TMP_FILES_PATH, "%s%s.xls" % (str(datetime.date.today().year), u"年创新创业学院"+excelname))
     workbook.save(save_path)
-    ret_path = os.path.join(MEDIA_URL+"tmp", "%s%s.xls" % (str(datetime.date.today().year), u"年创新实验学院"+excelname))
+    ret_path = os.path.join(MEDIA_URL+"tmp", "%s%s.xls" % (str(datetime.date.today().year), u"年创新创业学院"+excelname))
     return ret_path
 
 ROW_DICT={
@@ -212,7 +212,7 @@ def add_foot_data(worksheet, workbook,extra_data,row):
     worksheet.write(row+3,4,"任课教师签字：")
     worksheet.write(row+4,4,"基地负责人签字：")
     # worksheet.write_merge(row+5,row+6,0,3,"2、本表应于7月24日交创新时延学院办公室一份，另一份存教研室。")
-    worksheet.write(row+5,4,"创新实验学院签字：")
+    worksheet.write(row+5,4,"创新创业学院签字：")
 
 
 def add_extra_data(worksheet, workbook, extra_data):
