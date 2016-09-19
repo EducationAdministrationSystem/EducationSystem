@@ -52,7 +52,7 @@
                 {% for item in practice %}
     						{% if item.id == 2 %}
     						<option value="{{item.id}}">{{item}}（录取后分班）</option>
-                {% elif item.id != 10 and item.id != 11 %}
+                {% elif item.id != 10 and item.id != 11 and item.id != 12 %}
                 <option value="{{item.id}}">{{item}}</option>
                 {% endif %}
                 {% endfor %}
@@ -67,7 +67,7 @@
                 {% for item in practice %}
     						{% if item.id == 2 %}
     						<option value="{{item.id}}">{{item}}（录取后分班）</option>
-                {% elif item.id != 10 and item.id != 11 %}
+                {% elif item.id != 10 and item.id != 11 and item.id != 12 %}
                 <option value="{{item.id}}">{{item}}</option>
                 {% endif %}
                 {% endfor %}
