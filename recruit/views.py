@@ -15,11 +15,17 @@ def getContext(request):
         #   form=ApllyInfoForm(request.POST,instance=student)
         #else:
         form = ApllyInfoForm(request.POST)
+        stuId =  form.data['student_id']
+        if ApplyInfo.objects.filter(student_id = stuId):
+            ApplyInfo.objects.get(student_id = stuId).delete()
+            print "delete"
         if form.is_valid():
-            form.save()
+            try:
+                form.save()
+            except:
+                print "invalid"
             return "success"
-
-    else:        
+    else:
         form = ApllyInfoForm()
 
     practice = PracticeProfile.objects.all()
@@ -53,4 +59,4 @@ def responseMobileViews(request):
     return render(request, "recruit/response2.html", {})
 
 def registrationViews(request):
-    return render(request,"recruit/registration.html",{})    
+    return render(request,"recruit/registration.html",{})

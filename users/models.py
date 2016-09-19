@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
 from const import PRESIDENT_USER,PRACTICE_USER,TEACHER_USER,STUDENT_USER,SEX_CHOICES,SEX_MALE,DEFAULT_NATION,APARTMENT_CHOICES,COLLEGE_CHOICES,ADMINSTAFF_USER, CLASS_CHOICES,GRADE_CHOICE
 from const.models import UserIdentity
+from const import ADJUST_CHOICES
 # Create your models here.
 class PresidentProfile(models.Model):
     userid =models.ForeignKey(User,unique=True,verbose_name=u"用户id")
@@ -145,6 +146,8 @@ class ApplyInfo(models.Model):
     college=models.IntegerField(blank=False,choices=COLLEGE_CHOICES,verbose_name=u"院系")
     wish_first=models.ForeignKey(PracticeProfile,related_name="wish_first",verbose_name=u"第一志愿")
     wish_second=models.ForeignKey(PracticeProfile,related_name="wish_second",verbose_name=u"第二志愿")
+    ifAdujst = models.IntegerField(blank=False,null=True,choices=ADJUST_CHOICES,default = 0,
+                            verbose_name=u"是否服从调剂")
     self_introduction=models.TextField(max_length=600,blank=True,null=True,verbose_name=u"自我介绍")
     innovation_grade = models.IntegerField(blank=False, null=False, max_length=4,
                                default=lambda: datetime.datetime.today().year,
@@ -165,8 +168,3 @@ class ApplyInfo(models.Model):
         export_data[6] = self.get_college_display()
         export_data[7] = self.is_first_wish
         return export_data
-
-
-        
-    
-

@@ -13,6 +13,11 @@ SEX_CHOICES = (
     (SEX_FEMALE, u"女"),
 )
 
+ADJUST_CHOICES = (
+    (0, u"是"),
+    (1, u"否"),
+)
+
 GRADE_CHOICE=(
     (-1,u"全部"),
     (1,u"一年级"),

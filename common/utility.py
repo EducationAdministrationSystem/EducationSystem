@@ -164,6 +164,8 @@ def getYearbyGrade(grade):
 
 
 def selectCourseContext(request,student):
+    student = StudentProfile.objects.get(userid = request.user)
+    grade = getStudentGrade(student)
     now=datetime.datetime.now()
     admin_setting=AdminSetting.objects.all()[0]
     select_start=admin_setting.course_select_start
@@ -181,7 +183,10 @@ def selectCourseContext(request,student):
 
     print "$$$$$:" ,admin_setting.school_term
     # course_list=Course.objects.filter(course_to_class=student.small_class,course_id__course_term=admin_setting.school_term,start_year=school_year)
-    course_list=Course.objects.filter(course_to_class=student.small_class,start_year=school_year)
+    course_list=Course.objects.filter(Q(course_to_class=student.small_class)
+                                      & Q(start_year=school_year)
+                                      & (Q(course_id__course_grade = grade)
+                                      | Q(course_id__course_grade = -1)))
     course_list = course_list.filter(Q(course_id__course_term=admin_setting.school_term)|Q(course_id__course_term=-1))
     # course_list=course_list.filter(Q(course_id__course_grade=grade)|Q(course_id__course_grade=-1))
     course_list=course_list.filter(Q(course_id__course_grade__lte=grade)|Q(course_id__course_plan_id__in=GRADE_IGNORE))

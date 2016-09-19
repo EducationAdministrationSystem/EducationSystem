@@ -51,7 +51,7 @@ class ApllyInfoForm(forms.ModelForm):
         return second
     class Meta:
         model=ApplyInfo
-        exclude=("innovation_grade",)   
+        exclude=("innovation_grade",)
         widgets={
             'student_name':forms.TextInput(attrs={'class':'form-control regis-input','placeholder':u"姓名"}),
             'sex':forms.Select(attrs={'class':'form-control regis-input', 'placeholder':u'性别'}),
@@ -62,6 +62,7 @@ class ApllyInfoForm(forms.ModelForm):
             'college':forms.Select(attrs={'class':'form-control regis-input'}),
 			'wish_first':forms.Select(attrs={'class':'form-control regis-input'}),
             'wish_second':forms.Select(attrs={'class':'form-control regis-input'}),
+            'ifAdujst':forms.Select(attrs={'class':'form-control regis-input','placeholder':'是否服从调剂'}),
             'self_introduction':forms.Textarea(attrs={'class':'form-control','placeholder':u"请做简单自我介绍，包括自己特长和参加科技竞赛获奖经历(300字以内)。"})
         }
 
@@ -77,5 +78,3 @@ class CoursePlanForm(forms.ModelForm):
             'course_term':forms.Select(attrs={"class":'form-control','style':'width:50%'}),
             'course_point':forms.TextInput(attrs={"class":'form-control','style':'width:50%'}),
         }
-
-
