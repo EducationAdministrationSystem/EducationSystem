@@ -39,7 +39,7 @@ $("input[name='commit']").click(function(){
     //if(confirm("相同学号再次提交将会覆盖上次的信息, 确认是否提交报名信息...")){
     //   return true;
     //}
-    if(confirm("相同学号提交后不能更改，是否继续提交！")){
+    if(confirm("相同学号提交后将覆盖旧信息，是否继续提交！")){
         return true;
      }
     return false;
@@ -52,6 +52,6 @@ else if(u_agent.indexOf("MSIE")>0&&!window.innerWidth){
     //document.location.reload(true);
     window.open("http://202.118.67.200:2000/recruit");
     window.opener=null;
-    window.open('','_self'); 
+    window.open('','_self');
     window.close();
 }
