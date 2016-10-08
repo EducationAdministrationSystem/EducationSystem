@@ -13,37 +13,37 @@
           <div class="form-group">
             <label class="col-sm-2 control-label regis-label">姓名</label>
             {{form.student_name}}
-            {{form.student_name.errors}}
+            <span class="error-info">{{form.student_name.errors}}</span>
           </div>
           <div class="form-group">
             <label class="col-sm-2 control-label regis-label">学号</label>
             {{form.student_id}}
-            {{form.student_id.errors}}
+            <span class="error-info">{{form.student_id.errors}}</span>
           </div>
           <div class="form-group">
             <label class="col-sm-2 control-label regis-label">性别</label>
             {{form.sex}}
-            {{form.sex.errors}}
+            <span class="error-info">{{form.sex.errors}}</span>
           </div>
           <div class="form-group">
             <label class="col-sm-2 control-label regis-label">电话</label>
             {{form.tel_num}}
-            {{form.tel_num.errors}}
+            <span class="error-info">{{form.tel_num.errors}}</span>
           </div>
           <div class="form-group">
             <label class="col-sm-2 control-label regis-label">邮箱</label>
             {{form.email}}
-            {{form.email.errors}}
+            <span class="error-info">{{form.email.errors}}</span>
           </div>
           <div class="form-group">
             <label class="col-sm-2 control-label regis-label">学部</label>
             {{form.apartment}}
-            {{form.apartment.errors}}
+            <span class="error-info">{{form.apartment.errors}}</span>
           </div>
           <div class="form-group">
             <label class="col-sm-2 control-label regis-label">专业</label>
             {{form.college}}
-            {{form.college.errors}}
+            <span class="error-info">{{form.college.errors}}</span>
           </div>
           <div class="form-group">
             <label class="col-sm-2 control-label regis-label">第一志愿</label>
@@ -58,7 +58,7 @@
                 {% endfor %}
             </select>
 
-            {{form.wish_first.errors}}
+            <span class="error-info">{{form.wish_first.errors}}</span>
           </div>
           <div class="form-group">
             <label class="col-sm-2 control-label regis-label">第二志愿</label>
@@ -72,12 +72,12 @@
                 {% endif %}
                 {% endfor %}
             </select>
-            {{form.wish_second.errors}}
+            <span class="error-info">{{form.wish_second.errors}}</span>
           </div>
           <div class="form-group">
             <label class="col-sm-2 control-label regis-label">是否服从调剂</label>
                 {{form.ifAdujst}}
-                {{form.ifAdujst.errors}}
+                <span class="error-info">{{form.ifAdujst.errors}}</span>
           </div>
       </div>
       <div class="form-group">
