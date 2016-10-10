@@ -37,6 +37,14 @@
     {%endif%}
 
 </div>
+<div class="settingDiv">
+    {% if recruit_switch%}
+    <button class="btn btn-info btn-lg" id="recruit_switch">关闭在线报名开关</button>
+    {%else%}
+    <button class="btn btn-warning btn-lg" id="recruit_switch">打开在线报名开关</button>
+    {%endif%}
+
+</div>
 {%include "adminStaff/widgets/setting_modal.html"%}
 <script type='text/javascript' src="{{STATIC_URL}}bootstrap-datepicker/js/bootstrap-datetimepicker.js"></script>
 <script type='text/javascript' src="{{STATIC_URL}}js/adminStaff/managementsetting.js"></script>

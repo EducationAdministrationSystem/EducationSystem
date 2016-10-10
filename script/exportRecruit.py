@@ -6,13 +6,13 @@ from const import COLLEGE_SHORT_CHOICES
 
 student_list = []
 college_short = dict(COLLEGE_SHORT_CHOICES)
-# practiceObj = PracticeProfile.objects.get(full_name = "金融量化对冲研究室")
+practiceObj = PracticeProfile.objects.get(full_name = "金融量化对冲研究室")
 #创造发明创新实践班　机电创新实践班　数学建模创新实践班　软件创新实践班　媒体技术创新实践班　人形机器人创新实践班　ACM-ICPC创新实践班　
 #创业教育创新实践班　智能硬件工作坊　互联网＋工作坊　3D打印工作坊　虚拟现实工作坊　金融量化对冲研究室
-student_list = ApplyInfo.objects.filter(innovation_grade = "2016")
-# student_list = ApplyInfo.objects.filter(innovation_grade = "2016",wish_first = practiceObj)
+# student_list = ApplyInfo.objects.filter(innovation_grade = "2016")
+student_list = ApplyInfo.objects.filter(innovation_grade = "2016",wish_first = practiceObj)
 print len(student_list)
-outfile = open("../student.csv",'w')
+outfile = open("../jrlh.csv",'w')
 import csv
 writer = csv.writer(outfile)
 writer.writerow(["姓名", "学号", "性别", "电话", "院系", "专业", "第一志愿", "第二志愿", "是否调剂"])

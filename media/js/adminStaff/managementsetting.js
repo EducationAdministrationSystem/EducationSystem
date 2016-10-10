@@ -1,7 +1,7 @@
 $("#next_term_confirm").click(function(){
     var start=$("#first_day").val();
     Dajaxice.adminStaff.GoNextTerm(settingCallBack,{
-        "first":start    
+        "first":start
     });
 });
 
@@ -85,4 +85,7 @@ $("#course_select_switch").click(function(){
 });
 $("#class_change_switch").click(function(){
     Dajaxice.adminStaff.ClassChangeSwitch(settingCallBack,{});
+});
+$("#recruit_switch").click(function(){
+    Dajaxice.adminStaff.RecruitSwitch(settingCallBack,{});
 });

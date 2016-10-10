@@ -41,7 +41,7 @@ def modifyPasswordViews(request):
 @authority_required(ADMINSTAFF_USER)
 def modifyStudentPasswordViews(request):
 
-    modify_password_info = u""    
+    modify_password_info = u""
     if request.method == "POST":
         student_id = request.POST['input_student_id']
         new = request.POST['input_new_password']
@@ -60,7 +60,7 @@ def modifyStudentPasswordViews(request):
             else:
                 user.set_password(request.POST['input_new_password'])
                 user.save()
-                modify_password_info =  u"修改密码成功！"           
+                modify_password_info =  u"修改密码成功！"
     else :
         modify_password_info = u""
 
@@ -68,7 +68,7 @@ def modifyStudentPasswordViews(request):
         'modify_password_info':modify_password_info,
 
     }
-    return render(request,"adminStaff/modify_student_password.html",context)    
+    return render(request,"adminStaff/modify_student_password.html",context)
 
 @csrf.csrf_protect
 @login_required
@@ -174,6 +174,7 @@ def managementSettingViews(request):
     score_end=adminSetting.score_enter_end
     course_select_switch=adminSetting.course_select_switch
     class_change_switch=adminSetting.class_change_switch
+    recruit_switch=adminSetting.recruit_switch
     context={
         "cur_year":school_year,
         "cur_term":TERM_CHOICE[school_term][1],
@@ -184,7 +185,8 @@ def managementSettingViews(request):
         "score_start":score_start,
         "score_end":score_end,
         "course_select_switch":course_select_switch,
-        "class_change_switch":class_change_switch
+        "class_change_switch":class_change_switch,
+        "recruit_switch":recruit_switch
     }
     return render(request,"adminStaff/management_setting.html",context)
 

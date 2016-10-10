@@ -102,13 +102,13 @@ def DetailTeacher(request,teacherid):
 def getEditTeacherForm(request,teacherid):
     teacher = TeacherProfile.objects.get(teacher_id=teacherid)
     form = TeacherAddForm(initial={
-        'baseinfo_teacherid':teacher.teacher_id,        
+        'baseinfo_teacherid':teacher.teacher_id,
         'baseinfo_name':teacher.teacher_name,
-        'small_class':teacher.small_class.id,    
+        'small_class':teacher.small_class.id,
         'teacher_email':teacher.teacher_email,
         'teacher_telephone':teacher.teacher_telephone,
         'office_address':teacher.office_address,
-        'office_phone':teacher.office_phone,            
+        'office_phone':teacher.office_phone,
         })
     teacherEdit_html = render_to_string("widgets/teacher_edit.html",{'form':form})
     context={
@@ -321,6 +321,15 @@ def ClassChangeSwitch(request):
     return simplejson.dumps({})
 
 @dajaxice_register
+def RecruitSwitch(request):
+    adminSetting=AdminSetting.objects.all()[0]
+    print "111111",adminSetting.recruit_switch
+    adminSetting.recruit_switch=not adminSetting.recruit_switch
+    print "222222",adminSetting.recruit_switch
+    adminSetting.save()
+    return simplejson.dumps({})
+
+@dajaxice_register
 def getComment(request,courseid):
     course = Course.objects.get(id=courseid)
     evalutionlist = [obj.evalution for obj in SelectCourse.objects.filter(course=course)]
@@ -384,7 +393,7 @@ def ChosePractice(request,pid):
     }
     courseplan_html=render_to_string("widgets/course_plan_table.html",context)
     return simplejson.dumps({"courseplan_html":courseplan_html})
-                                
+
 
 
 @dajaxice_register
@@ -465,8 +474,3 @@ def CourseStatistical(request,rid):
         })
         html=render_to_string("adminStaff/widgets/statistical_table.html",{"terms":terms,"statistical":statistical})
     return simplejson.dumps({"html":html})
-
-
-    
-
-

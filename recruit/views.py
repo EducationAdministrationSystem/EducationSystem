@@ -6,6 +6,7 @@ from django.core.urlresolvers import reverse
 from const import *
 from users.models import ApplyInfo, PracticeProfile
 from common.forms import  ApllyInfoForm
+from const.models import AdminSetting
 
 def getContext(request):
     if request.method == "POST":
@@ -29,11 +30,12 @@ def getContext(request):
         form = ApllyInfoForm()
 
     practice = PracticeProfile.objects.all()
-
+    adminSetting=AdminSetting.objects.all()[0]
+    switch = not adminSetting.recruit_switch
     context = {
             "form":form,
             "practice": practice,
-            "recruit":True
+            "recruit_switch":switch
         }
     return context
 
@@ -43,6 +45,7 @@ def homeViews(request):
     if context=="success":
         return HttpResponseRedirect(reverse("recruit.views.responseViews"))
     return render(request, 'recruit/home.html', context)
+
 
 def responseViews(request):
     return render(request, "recruit/response.html", {})
