@@ -49,7 +49,7 @@ class PracticeProfile(models.Model):
 class SmallClass(models.Model):
     practice_class = models.ForeignKey(PracticeProfile,blank=False,verbose_name=u"所属实践班")
     class_name = models.CharField(max_length=30,blank=False,verbose_name=u"班级名称")
-    brother_class = models.ForeignKey('self')
+    brother_class = models.ForeignKey('self',null=True,default=None)
     class Meta:
         verbose_name="小班"
         verbose_name_plural="小班"
