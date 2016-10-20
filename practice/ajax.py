@@ -11,13 +11,14 @@ import datetime
 from common.forms import SmallClassForm
 from common.utility import create_student, isstudentExist
 from adminStaff.utility import get_xls_path
+from django.contrib.auth.models import User
 
 @dajaxice_register
 def studentEntry(request, apply_list, small_class_id):
     for student_id in apply_list:
         apply = ApplyInfo.objects.get(student_id = student_id)
-        if not isstudentExist(student_id): 
-            create_student(apply.student_name, apply.student_id, small_class_id, apply.innovation_grade, apply.sex, apply.tel_num, apply.email, apply.apartment, apply.college)       
+        if not isstudentExist(student_id):
+            create_student(apply.student_name, apply.student_id, small_class_id, apply.innovation_grade, apply.sex, apply.tel_num, apply.email, apply.apartment, apply.college)
     return simplejson.dumps({})
 
 @dajaxice_register
@@ -37,7 +38,7 @@ def getApplys(request, page):
     applys = sorted(list(applys), key=lambda x: x.is_first_wish, reverse = True)
     context = getContext(applys, page, "item", 0)
 
-    context.update({"number": number, 
+    context.update({"number": number,
                     "first_number": first_number,
                     "practice": practice, })
 
@@ -67,3 +68,15 @@ def getComment(request,courseid):
     }
     form_html = render_to_string("practice/widgets/comment_table.html",context)
     return simplejson.dumps({"form_html":form_html})
+
+@dajaxice_register
+def backOutEntry(request,backout_list):
+    practice = PracticeProfile.objects.get(userid = request.user)
+    for student_id in backout_list:
+        if isstudentExist(student_id):
+            student = StudentProfile.objects.get(baseinfo_studentid = student_id)
+            if student.small_class.practice_class == practice:
+                user = User.objects.get(username = student_id)
+                student.delete()
+                user.delete()
+    return simplejson.dumps({})
