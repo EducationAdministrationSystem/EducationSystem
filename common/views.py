@@ -27,7 +27,7 @@ def common_modifyPasswordViews(request):
         else:
             user.set_password(request.POST['input_new_password'])
             user.save()
-            return u"修改密码成功！"           
+            return u"修改密码成功！"
     else :
         return u""
 
@@ -144,8 +144,14 @@ def common_classchangeViews(request,teachertype = None):
             changeclasshandled_set = ChangeClassApply.objects.filter(originclass = teacher.small_class).exclude(originOK = AGREE_CHOICE_UNDFINED)
         else:
             change_role = "receive"
+            applyAll = ChangeClassApply.objects.all()
+            print "################"
+            print len(applyAll)
             changeclass_set = ChangeClassApply.objects.filter(receiveclass = teacher.small_class, originOK = AGREE_CHOICE_AGREE,receiveOK = AGREE_CHOICE_UNDFINED)
+            print len(changeclass_set)
             changeclasshandled_set = ChangeClassApply.objects.filter(receiveclass = teacher.small_class).exclude(receiveOK = AGREE_CHOICE_UNDFINED)
+            print "*********"
+            print len(changeclasshandled_set)
     changepreviewform = ClassChangePreviewForm()
     context = {
         'changeclass_set':changeclass_set,
