@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 
 student_list = {}
 try:
-    rfile = open("../df.txt")
+    rfile = open("../a.txt")
     for line in rfile:
         s=line.strip().split('\t')
         # student_list.append(int(s[1]))
@@ -21,10 +21,10 @@ count = len(student_list)
 schoolyear = SchoolYear.objects.filter(school_year="2016-2017")
 schoolyear=schoolyear[0]
 print schoolyear
-course = Course.objects.filter(course_id__course_plan_id="1160165090")
+course = Course.objects.filter(course_id__course_plan_id="1160173010")
 print course
 course=course[0]
-course.int_nelepeo = count
+course.int_nelepeo = course.int_nelepeo + count
 course.save()
 
 for stu_num in student_list:
@@ -32,14 +32,16 @@ for stu_num in student_list:
         student = StudentProfile.objects.get(baseinfo_studentid=str(stu_num))
     except:
         try:
+            print "create student"
             user=User.objects.create_user(username=stu_num,password=stu_num)
             user.save()
         except:
             user=User.objects.get(username=stu_num)
-        smallclass=SmallClass.objects.filter(class_name="创新创业工程与实践")
+        smallclass=SmallClass.objects.filter(class_name="3d打印工作坊")
         student=StudentProfile(userid=user,small_class=smallclass[0])
         student.baseinfo_name=student_list[stu_num]
         student.baseinfo_studentid=str(stu_num)
+        student.innovation_grade = 2016
         student.save()
     if SelectCourse.objects.filter(student=student,course=course).count()==0:
         selectcourse_obj = SelectCourse()

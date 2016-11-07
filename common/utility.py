@@ -164,7 +164,6 @@ def getYearbyGrade(grade):
 
 
 def selectCourseContext(request,student):
-    student = StudentProfile.objects.get(userid = request.user)
     grade = getStudentGrade(student)
     now=datetime.datetime.now()
     admin_setting=AdminSetting.objects.all()[0]

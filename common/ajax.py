@@ -41,8 +41,8 @@ def SelectCourseOperation(request,selected,sid):
             course=Course.objects.get(pk=item)
             if course.int_nelepeo == course.class_capacity:
                 status=status+u"课程“"+course.course_id.course_name+u"” 已经没有课余量，选课失败！"+"<br/>"
-            #!!!!!!    
-            # it should be rewrite later    
+            #!!!!!!
+            # it should be rewrite later
             # elif checkTimeCrash(course,student):
             #     status=status+u"课程“"+course.course_id.course_name+u"” 与已选课程上课时间冲突，选课失败！"+"<br/>"
             #elif SelectCourse.objects.filter(student=student,course__course_id=course.course_id):
@@ -236,7 +236,7 @@ def exportCourseMembers(request, course_id):
     head_dict = {0:u'姓名',1:u'学号',2:u'所属班级',3:u'进入年份',4:u'性别',5:u'院系',6:u'邮箱',7:u'电话'}
     excelname = course.course_id.course_name + u"学生信息表"
     return get_xls_path(request,head_dict,stu_set,excelname)
-    
+
 
 
 @dajaxice_register
@@ -357,7 +357,7 @@ def CoursePlanDelete(request,iid,pid):
         'status':0,
         'courseplan_html':courseplan_html
     })
-@dajaxice_register 
+@dajaxice_register
 def getSearchStudentPagination(request,page,searchform):
     message = ""
     role = request.session.get('auth_role',"")
@@ -377,7 +377,8 @@ def GetCourseInfo(request,sid):
         student=StudentProfile.objects.get(pk=sid)
         context=selectCourseContext(request,student)
     select_table_html=render_to_string("widgets/select_course.html",context)
-    return simplejson.dumps({"select_table_html":select_table_html})
+    ret = simplejson.dumps({"select_table_html":select_table_html})
+    return ret
 
 
 
@@ -415,4 +416,3 @@ def StudentRegistration(requset,student_name,student_id,sex,tel_num):
         status=1
     finally:
         return simplejson.dumps({"message":message,"status":status})
-
