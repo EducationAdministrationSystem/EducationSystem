@@ -199,7 +199,6 @@ def get_filter_data(filter_form):
         terms   = course_filter_form.cleaned_data['terms']
         grades  = course_filter_form.cleaned_data['grades']
         years   = course_filter_form.cleaned_data['years']
-        print classes
         if classes == '-1':
             classes = ''
         if  terms == '-1':
