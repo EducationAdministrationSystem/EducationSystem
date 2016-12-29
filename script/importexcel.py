@@ -7,9 +7,9 @@ from django.contrib.auth.models import User
 
 student_list = {}
 try:
-    rfile = open("../jrlh.txt")
+    rfile = open("../a.txt")
     for line in rfile:
-        s=line.strip().split('\t')
+        s=line.strip().split()
         # student_list.append(int(s[1]))
         student_list[int(s[1])] = s[0]
     rfile.close()
@@ -22,10 +22,19 @@ print count
 schoolyear = SchoolYear.objects.filter(school_year="2016-2017")
 schoolyear=schoolyear[0]
 print schoolyear
+<<<<<<< HEAD
 course = Course.objects.filter(course_id__course_plan_id="1160175010")
 course=course[0]
 print course
 course.int_nelepeo = count
+=======
+course = Course.objects.filter(course_id__course_plan_id="1160165031",course_id__course_term=2,start_year=schoolyear)
+print course
+for cou in course:
+    print cou.course_id.course_term
+course=course[0]
+course.int_nelepeo = course.int_nelepeo + count
+>>>>>>> 7811d4902efcd784f0d128e93983ed49757923f3
 course.save()
 
 for stu_num in student_list:
@@ -35,6 +44,7 @@ for stu_num in student_list:
         print "creat user"
         print stu_num
         try:
+            print "create student"
             user=User.objects.create_user(username=stu_num,password=stu_num)
             user.save()
         except:
@@ -43,6 +53,7 @@ for stu_num in student_list:
         student=StudentProfile(userid=user,small_class=smallclass[0])
         student.baseinfo_name=student_list[stu_num]
         student.baseinfo_studentid=str(stu_num)
+        student.innovation_grade = 2016
         student.save()
     if SelectCourse.objects.filter(student=student,course=course).count()==0:
         selectcourse_obj = SelectCourse()

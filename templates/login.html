@@ -36,27 +36,27 @@
                         {% else%}
                         <div class= "row">
                         </div>
-                        {% endif %}   
+                        {% endif %}
 
                         <div class="form-group" >
                             <center >
-                                <div class="input-group" >                       
+                                <div class="input-group" >
                                     <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                                    {{form.username}}                             
+                                    {{form.username}}
                                 </div>
                                     {% for error in form.username.errors %}
                                     <span class="help-inline"><b>{{ error }}</b></span>
                                     {% endfor %}
                                     <br/>
-                                <div class="input-group" >                
+                                <div class="input-group" >
                                     <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                                    {{form.password}}     
+                                    {{form.password}}
                                 </div>
                                     {% for error in form.password.errors %}
                                         <span class="help-inline"><b>{{ error }}</b></span>
                                     {% endfor %}
                         </div>
-                     
+
 
                         <div class="form-group">
                             <label class="radio-inline">
@@ -80,21 +80,20 @@
                         <div>
                             {% csrf_token %}
                             <button class="btn btn-primary btn-lg" >登录</button>&nbsp;
-                            <a href="/recruit" class="btn btn-primary btn-lg" type="button" >招新</a>&nbsp;
-                            <a href="/recruit/registration" class="btn btn-primary btn-lg" type="button" >注册</a>
+                            <a href="/recruit" class="btn btn-primary btn-lg" type="button" >招新报名</a>&nbsp;
+                            <!-- <a href="/recruit/registration" class="btn btn-primary btn-lg" type="button" >注册</a> -->
                         </div>
                     </form>
                 </div>
 
-            
+
             </div>
             <div id="version">
                 <br/><br/>
                 <p>*****版权归属---@大连理工大学创新创业学院*****</p>
             </div>
         </div>
-        
+
         <script type="text/javascript" src="{{STATIC_URL}}js/login.js"></script>
     </body>
 </html>
-

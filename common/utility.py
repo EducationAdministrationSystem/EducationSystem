@@ -86,10 +86,11 @@ def create_class(full_name,nick_name):
     cla.save()
 
 def create_smallclass(class_name,practice_class):
-
     cla = SmallClass()
     cla.class_name=class_name
     cla.practice_class=PracticeProfile.objects.get(pk=practice_class)
+    cla.save()
+    cla.brother_class=cla
     cla.save()
     for i in range(1, 4):
         nscp = SmallClassPractice(small_class = cla, class_grade = i)
@@ -164,7 +165,7 @@ def getYearbyGrade(grade):
 
 
 def selectCourseContext(request,student):
-    student = StudentProfile.objects.get(userid = request.user)
+    # student = StudentProfile.objects.get(userid = request.user)
     grade = getStudentGrade(student)
     now=datetime.datetime.now()
     admin_setting=AdminSetting.objects.all()[0]
