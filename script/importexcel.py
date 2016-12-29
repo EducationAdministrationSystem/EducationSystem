@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 
 student_list = {}
 try:
-    rfile = open("../df.txt")
+    rfile = open("../jrlh.txt")
     for line in rfile:
         s=line.strip().split('\t')
         # student_list.append(int(s[1]))
@@ -18,12 +18,13 @@ except Exception, e:
     pass
 
 count = len(student_list)
+print count
 schoolyear = SchoolYear.objects.filter(school_year="2016-2017")
 schoolyear=schoolyear[0]
 print schoolyear
-course = Course.objects.filter(course_id__course_plan_id="1160165090")
-print course
+course = Course.objects.filter(course_id__course_plan_id="1160175010")
 course=course[0]
+print course
 course.int_nelepeo = count
 course.save()
 
@@ -31,12 +32,14 @@ for stu_num in student_list:
     try:
         student = StudentProfile.objects.get(baseinfo_studentid=str(stu_num))
     except:
+        print "creat user"
+        print stu_num
         try:
             user=User.objects.create_user(username=stu_num,password=stu_num)
             user.save()
         except:
             user=User.objects.get(username=stu_num)
-        smallclass=SmallClass.objects.filter(class_name="创新创业工程与实践")
+        smallclass=SmallClass.objects.filter(class_name="金融量化对冲研究室")
         student=StudentProfile(userid=user,small_class=smallclass[0])
         student.baseinfo_name=student_list[stu_num]
         student.baseinfo_studentid=str(stu_num)
