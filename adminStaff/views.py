@@ -163,6 +163,12 @@ def studentmanage_classchangeViews(request):
 @login_required
 @authority_required(ADMINSTAFF_USER)
 @csrf.csrf_protect
+def studentmanage_studentchangeclassViews(request):
+    return render(request,"adminStaff/studentmanage/studentmanage_studentchangeclass.html")
+
+@login_required
+@authority_required(ADMINSTAFF_USER)
+@csrf.csrf_protect
 def managementSettingViews(request):
     adminSetting=AdminSetting.objects.all()[0]
     school_year=adminSetting.school_year.school_year

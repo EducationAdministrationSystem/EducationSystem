@@ -16,7 +16,7 @@ from django.db.models import Q
 from backend.decorators import check_auth
 from const import *
 from backend.utility import getContext
-from student.forms import StudentSearchForm,StudentAddForm
+from student.forms import StudentSearchForm,StudentAddForm,studentchangeclassForm
 from adminStaff.utility import get_xls_path,get_score_xls_path
 from common.forms import CoursePlanForm
 
@@ -247,6 +247,37 @@ def searchStudent(request, search_value):
         students = students.filter(small_class = teacher.small_class)
     context = getContext(students, 1, "item", 0)
     return render_to_string("teacher/widgets/student_set_table.html", context)
+
+@dajaxice_register
+def getSearchChangeClassStudent(request, search_value):
+    students = StudentProfile.objects.filter(Q(baseinfo_name = search_value) | Q(baseinfo_studentid = search_value))
+    if students:
+        student = students[0]
+        studentchangeclass = studentchangeclassForm(studentname=student.baseinfo_name,
+            studentid=student.baseinfo_studentid,
+            originclass=student.small_class.class_name)
+    else:
+        studentchangeclass = studentchangeclassForm(studentname="",
+            studentid="",
+            originclass="")
+    context = {
+        'form': studentchangeclass
+    }
+    select_student_html=render_to_string("common/widget/select_student_change_class.html",context)
+    return simplejson.dumps({"html":select_student_html})
+
+@dajaxice_register
+def saveChangeClass(request, form):
+    form = studentchangeclassForm(deserialize_form(form))
+    if form.is_valid():
+        message = '转班成功'
+        stuid = trip_str(form.cleaned_data["studentid"])
+        student = StudentProfile.objects.get(baseinfo_studentid = stuid)
+        student.small_class = SmallClass.objects.get(id = form.cleaned_data["receiveclass"])
+        student.save()
+    else:
+        message = '转班失败'
+    return simplejson.dumps({'message':message})
 
 @dajaxice_register
 def getStudentScore(request, studentid):

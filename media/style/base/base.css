@@ -28,7 +28,7 @@ a:hover,a:focus{
     /*background-size:cover;*/
     /*border-radius:20px;*/
     width:220px;
-    
+
 }
 .main-container{
     padding-left:3px;
@@ -91,7 +91,7 @@ a:hover,a:focus{
     /*background-size:cover;*/
     border:0px ;
     outline:none;
-    color:black;   
+    color:black;
     font-size:15px;
     display:block;
     text-align:center;
@@ -113,7 +113,7 @@ a:hover,a:focus{
 }
 
 .navbar-button:hover{
-    background-image:url(/static/images/logo.jpg);
+    /*background-image:url(/static/images/logo.png);*/
     background-size: cover;
 }
 
@@ -141,5 +141,3 @@ a:hover,a:focus{
     background-image: url(/static/images/dh.jpg);
     background-size:cover;
 }
-
-

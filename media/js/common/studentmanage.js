@@ -55,3 +55,19 @@ function getSearchStudentCallback(data){
     $("#student_search").html(data.html);
 }
 
+$(document).on('click', '#studentSearch', function(){
+    var val = $('#searchStu').val();
+    console.log(val);
+    Dajaxice.common.getSearchChangeClassStudent(getSearchChangeClassStudentCallBack, {'search_value': val});
+});
+
+function getSearchChangeClassStudentCallBack(data){
+    $('#select_student_change_class_table').html(data.html);
+}
+
+$(document).on('click', '#changclassensure', function(){
+    Dajaxice.common.saveChangeClass(saveChangeClassCallBack, {'form':$('#student_change_class_form').serialize(true)});
+});
+function saveChangeClassCallBack(data){
+    alert(data.message);
+}

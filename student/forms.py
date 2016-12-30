@@ -175,3 +175,35 @@ class ClassChangePreviewForm(forms.Form):
 
     classchange_agree = forms.ChoiceField(choices=classchange_agree_choice,
       widget=forms.Select(attrs={'class':'form-control','style':"width:300px;"}),)
+
+class studentchangeclassForm(forms.Form):
+    studentname = forms.CharField(max_length=100,label=u"姓名",widget=forms.forms.TextInput(attrs={'class':'form-control col-lg-3','style':'readonly:readonly!important'}))
+    studentid = forms.CharField(max_length=100,label=u"学号",widget=forms.forms.TextInput(attrs={'class':'form-control col-lg-3','style':'readonly:readonly!important'}))
+    originclass = forms.CharField(max_length=100,label=u"原实践班",widget=forms.forms.TextInput(attrs={'class':'form-control col-lg-3','style':'readonly:readonly!important'}))
+    receiveclass = forms.ChoiceField(choices=[],label=u"转入实践班",
+      widget=forms.Select(attrs={'class':'form-control col-lg-3'}),)
+    def __init__(self, *args, **kwargs):
+
+        flag = False
+        if kwargs.has_key('studentname'):
+            flag = True
+            studentname = kwargs['studentname']
+            studentid = kwargs['studentid']
+            originclass = kwargs['originclass']
+
+            del kwargs['studentname']
+            del kwargs['studentid']
+            del kwargs['originclass']
+
+        super(studentchangeclassForm, self).__init__(*args, **kwargs)
+
+        if flag:
+            self.fields['studentname'].initial = studentname
+            self.fields['studentid'].initial = studentid
+            self.fields['originclass'].initial = originclass
+
+        allPractice = SmallClass.objects.all()
+        choiceList = [('-1', '----')]
+        for sc in allPractice:
+            choiceList.append((sc.id, sc.class_name))
+        self.fields["receiveclass"].choices = tuple(choiceList)

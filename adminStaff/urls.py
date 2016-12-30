@@ -15,7 +15,7 @@ urlpatterns = patterns('',
         adminStaff_views.modifyStudentPasswordViews
     ),
 
-    
+
     url(
        r'^modify_password$',
         adminStaff_views.modifyPasswordViews
@@ -43,6 +43,10 @@ urlpatterns = patterns('',
     url(
         r'^studentmanage/classchange$',
         adminStaff_views.studentmanage_classchangeViews
+    ),
+    url(
+        r'^studentmanage/studentchangeclass$',
+        adminStaff_views.studentmanage_studentchangeclassViews
     ),
     url(
         r'^managementsetting$',
@@ -116,7 +120,7 @@ urlpatterns += patterns('',
         r'^teachermanage/search$',
         adminStaff_views.teachermanage_searchViews
     ),
-    
+
 )
 
 #班级管理URL
