@@ -112,7 +112,7 @@ def get_score_xls_path(request,head_list,obj_set,excelname, func_str = "get_expo
 
     xls_obj, workbook ,row= xls_info_course_gen(request,head_list,excelname,extra_data)
     num = len(head_list)
-    row += 1 
+    row += 1
     count = 0
     score_num = len(obj_set)
     i = 0
@@ -171,6 +171,7 @@ def get_xls_path(request,head_list,obj_set,excelname, func_str = "get_export_dat
             xls_obj.write(row, i, unicode(item_datas[i]), style)
         row += 1
     save_path = os.path.join(TMP_FILES_PATH, "%s%s.xls" % (str(datetime.date.today().year), u"年创新创业学院"+excelname))
+    save_path.replace('/', '')
     workbook.save(save_path)
     ret_path = os.path.join(MEDIA_URL+"tmp", "%s%s.xls" % (str(datetime.date.today().year), u"年创新创业学院"+excelname))
     return ret_path
@@ -233,7 +234,7 @@ def add_extra_data(worksheet, workbook, extra_data):
     worksheet.write(3,8,"学分:",style1)
     worksheet.write(3,9,str(extra_data[6]),style)
     return extra_data[-1]
-    
+
 def xls_import_course(path):
     workbook = xlrd.open_workbook(path)
     table = workbook.sheet_by_index(0)
@@ -340,5 +341,3 @@ def xls_import_course(path):
         save_path = "".join(path.split('.')[:-1])+".xls"
         wbook.save(save_path)
         return (False,save_path)
-
-

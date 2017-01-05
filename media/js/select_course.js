@@ -13,7 +13,7 @@ $(document).on("click","#select_confirm",function(){
             selected.push(val);
             plan_id.push(name);
         }
-    
+
     }
     if(selected.length===0)
     {
@@ -22,6 +22,7 @@ $(document).on("click","#select_confirm",function(){
         return false;
     }
     var flag = 1;
+    console.log(plan_id);
     for(var i=0;i<plan_id.length;++i)
     {
         iid1 = plan_id[i].substr(0,8);
@@ -36,6 +37,7 @@ $(document).on("click","#select_confirm",function(){
             }
         }
     }
+    console.log(flag);
     if(flag==0)alert("不能选择相同课程！");
     if(flag==1)
     {
@@ -49,7 +51,7 @@ $(document).on("click","#select_confirm",function(){
             "sid":sid
         })
     }
-    
+
 });
 
 function select_course_callback(data){
@@ -59,6 +61,6 @@ function select_course_callback(data){
 
 }
 $(document).on("hide.bs.modal","#alert_info_modal",function(e){
-    
-    location.reload(true);   
+
+    location.reload(true);
 });

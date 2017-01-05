@@ -36,7 +36,9 @@ def SelectCourseOperation(request,selected,sid):
         student=StudentProfile.objects.get(pk=sid)
     for item in selected:
         item=int(item)
-        select_course=SelectCourse.objects.filter(student=student,course__pk=item)
+        print 'dfdfdf:%s' % item
+        select_course=SelectCourse.objects.filter(student=student,course__course_id__course_plan_id=item)
+        print len(select_course)
         if select_course.count()==0:
             course=Course.objects.get(pk=item)
             if course.int_nelepeo == course.class_capacity:
@@ -45,15 +47,15 @@ def SelectCourseOperation(request,selected,sid):
             # it should be rewrite later
             # elif checkTimeCrash(course,student):
             #     status=status+u"课程“"+course.course_id.course_name+u"” 与已选课程上课时间冲突，选课失败！"+"<br/>"
-            #elif SelectCourse.objects.filter(student=student,course__course_id=course.course_id):
-                #status=status+u"课程“"+course.course_id.course_name+u"” 相同课程计划课程已经选过，选课失败！"+"<br/>"
+            elif SelectCourse.objects.filter(student=student,course__course_id=course.course_id):
+                status=status+u"课程“"+course.course_id.course_name+u"” 相同课程计划课程已经选过，选课失败！"+"<br/>"
             else:
+                print 'success'
                 course.int_nelepeo=course.int_nelepeo+1
                 course.save()
                 course_select_item=SelectCourse(student=student,course=course)
                 course_select_item.save()
                 Score(select_obj = course_select_item).save()
-
                 status=status+u"课程“"+course.course_id.course_name+u"” 选课成功！"+"<br/>"
     return simplejson.dumps({"status":status})
 
@@ -235,6 +237,7 @@ def exportCourseMembers(request, course_id):
     stu_set = [select.student for select in selects]
     head_dict = {0:u'姓名',1:u'学号',2:u'所属班级',3:u'进入年份',4:u'性别',5:u'院系',6:u'邮箱',7:u'电话'}
     excelname = course.course_id.course_name + u"学生信息表"
+    excelname = excelname.replace('/','-')
     return get_xls_path(request,head_dict,stu_set,excelname)
 
 
