@@ -1,6 +1,6 @@
 body{
     background-image: url(/static/images/background.jpg);
-    background-size: cover;
+    background-size: 100% 100%;
 }
 #headerpic{
     height:80px;
@@ -28,6 +28,7 @@ a:hover,a:focus{
     /*background-size:cover;*/
     /*border-radius:20px;*/
     width:220px;
+    padding-left: 60px;
 
 }
 .main-container{
@@ -128,11 +129,6 @@ a:hover,a:focus{
     margin-right:20px;
 }
 
-.nav-left{
-    padding-left: 60px!important;
-}
-
-
 .highlight{
     background-color: rgb(0,122,255);
 }
@@ -140,4 +136,39 @@ a:hover,a:focus{
 .backgrd{
     background-image: url(/static/images/dh.jpg);
     background-size:cover;
+}
+
+@media (max-width: 768px){
+    #welcome_word{
+        text-align: right;
+        font-size: 18px;
+    }
+    .menu-list{
+        width:100%;
+        height:auto!important;
+        background:#fff;
+        overflow: hidden;
+        padding-left: 0px;
+        margin-bottom: 10px;
+    }
+    .nav-left{
+        padding-left: 10px!important;
+    }
+    .menu-button-middle{
+        width:25%;
+        height:30px;
+        box-sizing: border-box;
+        float:left;
+        font-size: 11px;
+        padding-left:5px;
+        border-bottom: 1px solid gray;
+        border-top:none;
+    }
+    .mynavbar a{
+        font-size: 10px;
+    }
+    .main-content{
+        margin-left:0;
+        margin-right:0;
+    }
 }
