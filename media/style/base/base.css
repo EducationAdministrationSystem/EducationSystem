@@ -28,7 +28,7 @@ a:hover,a:focus{
     /*background-size:cover;*/
     /*border-radius:20px;*/
     width:220px;
-    padding-left: 60px;
+    margin-left: 30px;
 
 }
 .main-container{
@@ -78,8 +78,8 @@ a:hover,a:focus{
     min-height:900px;
     max-height:910px;
     overflow:auto;
-    margin-left:-25px;
-    margin-right:-1px;
+    margin-left:-40px;
+    margin-right:20px;
 }
 .menu-blank{
     background-color:red;

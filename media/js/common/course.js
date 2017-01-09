@@ -14,7 +14,7 @@ function refreshMutilipSelect(){
   }($('#id_class_time'));
 }
 $(document).ready(function() {
-  refreshMutilipSelect();
+  // refreshMutilipSelect();
 });
 
 
@@ -26,11 +26,13 @@ $('#course_info_modal #save_course').click(function(){
 
 $(document).on("click","table td",function(){
   uid=$(this).parent().find("button").attr("uid");
-  if($(this).find("button").length >0){
-    page = $(".course_paginator").find(".disabled").attr("value");
-    if(confirm("确认删除此门课程吗？与该门课程相关数据同时删除。")) Dajaxice.adminStaff.DeleteCourse(Course_callback,{'filter_form':$("#course_filter_form").serialize(true),'uid':uid,'page':page});
-  }else{
-    Dajaxice.adminStaff.GetCourseForm(CourseForm_callback,{'uid':uid});
+  if(uid){
+      if($(this).find("button").length >0){
+        page = $(".course_paginator").find(".disabled").attr("value");
+        if(confirm("确认删除此门课程吗？与该门课程相关数据同时删除。")) Dajaxice.adminStaff.DeleteCourse(Course_callback,{'filter_form':$("#course_filter_form").serialize(true),'uid':uid,'page':page});
+      }else{
+        Dajaxice.adminStaff.GetCourseForm(CourseForm_callback,{'uid':uid});
+      }
   }
 })
 

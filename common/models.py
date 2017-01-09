@@ -119,12 +119,9 @@ class Score(models.Model):
         export_data[0] = self.select_obj.student.baseinfo_studentid
         export_data[1] = self.select_obj.student.get_name()
         try:
-            export_data[2] = COLLEGE_SHORT_CHOICES[self.select_obj.student.collegeinfo_college][1]
+            export_data[2] = COLLEGE_SHORT_CHOICES[self.select_obj.student.collegeinfo_college][1].decode('utf-8')
         except:
             export_data[2] = ""
-        #export_data[3] = self.attendance
-        #export_data[4] = self.homework
-        #export_data[5] = self.final
         export_data[3] = self.total
         return export_data
     def get_all_data(self):
@@ -184,7 +181,7 @@ class PracticeClassPractice(models.Model):
     class_select_6_4 = models.BooleanField(blank = False, default = False, verbose_name = "课余量周六4")
     class_select_6_5 = models.BooleanField(blank = False, default = False, verbose_name = "课余量周六5")
     class_select_6_6 = models.BooleanField(blank = False, default = False, verbose_name = "课余量周六6")
-    
+
     class_select_7_1 = models.BooleanField(blank = False, default = False, verbose_name = "课余量周日1")
     class_select_7_2 = models.BooleanField(blank = False, default = False, verbose_name = "课余量周日2")
     class_select_7_3 = models.BooleanField(blank = False, default = False, verbose_name = "课余量周日3")
@@ -263,7 +260,7 @@ class SmallClassPractice(models.Model):
     class_remain_6_4 = models.IntegerField(blank = False, default = 0, verbose_name = "课余量周六4", validators = [MinValueValidator(0)])
     class_remain_6_5 = models.IntegerField(blank = False, default = 0, verbose_name = "课余量周六5", validators = [MinValueValidator(0)])
     class_remain_6_6 = models.IntegerField(blank = False, default = 0, verbose_name = "课余量周六6", validators = [MinValueValidator(0)])
-    
+
     class_remain_7_1 = models.IntegerField(blank = False, default = 0, verbose_name = "课余量周日1", validators = [MinValueValidator(0)])
     class_remain_7_2 = models.IntegerField(blank = False, default = 0, verbose_name = "课余量周日2", validators = [MinValueValidator(0)])
     class_remain_7_3 = models.IntegerField(blank = False, default = 0, verbose_name = "课余量周日3", validators = [MinValueValidator(0)])

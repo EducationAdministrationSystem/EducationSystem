@@ -130,6 +130,7 @@ def get_score_xls_path(request,head_list,obj_set,excelname, func_str = "get_expo
                 xls_obj.write(row, j+1, unicode(item_datas1[j]),style)
                 xls_obj.write(row, j+6, unicode(item_datas2[j]),style)
         except Exception,e:
+            print e
             pass
         finally:
             row+= 1
