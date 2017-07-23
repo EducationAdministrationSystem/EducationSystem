@@ -29,9 +29,19 @@ $("#course_select").change(function(){
     Dajaxice.teacher.getCourseMembers(getCourseMembersCallBack, {"course_id": course_id,});
 });
 function getCourseMembersCallBack(data){
-    $("#div_sub_score_checkin").html(data.sub_html);
-    $("#div_total_score_checkin").html(data.total_html);
-    get_statistics();
+    if(data.status == '0')
+    {
+        $("#div_sub_score_checkin").html(data.sub_html);
+        $("#div_total_score_checkin").html(data.total_html);
+        get_statistics();
+    }
+    else
+    {
+        $("#div_sub_score_checkin").html("");
+        $("#div_total_score_checkin").html("");
+        $("#statistics").html("");
+        setTimeout(function(){alert(data.message)}, 0)
+    }
 }
 
 $(document).ready(function(){

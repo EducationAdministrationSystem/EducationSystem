@@ -1,3 +1,11 @@
+#!/usr/local/bin/python3
+# coding: UTF-8
+# Author: David
+# Email: youchen.du@gmail.com
+# Created: 2017-07-23 18:07
+# Last modified: 2017-07-23 18:52
+# Filename: ajax.py
+# Description:
 # coding: UTF-8
 from dajax.core import Dajax
 from dajaxice.decorators import dajaxice_register
@@ -33,10 +41,18 @@ def submitCourse(request, course_id):
 @dajaxice_register
 def getCourseMembers(request, course_id):
     message = "ok"
-    course = Course.objects.get(id = course_id)
-    selects = SelectCourse.objects.filter(course__id = course_id)
+    try:
+        course = Course.objects.get(id=course_id)
+    except Course.DoesNotExist:
+        return simplejson.dumps({"message": u"未查询到该门课程的相关成绩",
+                                 "status": "2"})
+    rates = [course.attendance_rate, course.homework_rate, course.final_rate]
+    if not any(filter(lambda x: x, rates)):
+        return simplejson.dumps({"message": u"请先设置该门课程的系数比例",
+                                 "status": '1'})
+    selects = SelectCourse.objects.filter(course__id=course_id)
     for select in selects:
-        tmp_score = Score.objects.filter(select_obj = select)   
+        tmp_score = Score.objects.filter(select_obj=select)
         if tmp_score:
             select.score = tmp_score[0]
         else:
@@ -50,7 +66,8 @@ def getCourseMembers(request, course_id):
     sub_html = render_to_string("teacher/widgets/sub_score_checkin.html", {"selects": selects, "course": course, })
     total_html = render_to_string("teacher/widgets/total_score_checkin.html", {"selects": selects, "course": course, })
 
-    return simplejson.dumps({"message": message, "sub_html": sub_html, "total_html": total_html})
+    return simplejson.dumps({"message": message, "sub_html": sub_html,
+                             "status": '0', "total_html": total_html})
 
 @dajaxice_register
 def getEditform(request):

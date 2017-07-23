@@ -1,3 +1,11 @@
+#!/usr/local/bin/python3
+# coding: UTF-8
+# Author: David
+# Email: youchen.du@gmail.com
+# Created: 2017-07-23 18:14
+# Last modified: 2017-07-23 18:52
+# Filename: settings_dev.py
+# Description:
 """
     Author: tianwei
     Email: liutianweidlut@gmail.com
@@ -13,11 +21,11 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'tempdatabase',             # Or path to database file if using sqlite3.
-        # 'NAME': 'EducationSystem',
+        #'NAME': 'EducationSystem',
         'USER': 'root',                       # Not used with sqlite3.
         'PASSWORD': 'root',                   # Not used with sqlite3.
         'HOST': '192.168.2.81',                           # Set to empty string for localhost. Not used with sqlite3.
-        # 'HOST':'192.168.20.106',
+        #'HOST':'192.168.20.106',
         'PORT': '3306',                           # Set to empty string for default. Not used with sqlite3.
     }
 }
