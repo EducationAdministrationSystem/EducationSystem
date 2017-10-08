@@ -58,9 +58,10 @@ class ApllyInfoForm(forms.ModelForm):
             'student_id':forms.TextInput(attrs={"class":'form-control regis-input', 'placeholder': '学号'}),
             'tel_num':forms.TextInput(attrs={"class":'form-control regis-input', 'placeholder': '电话'}),
             'email':forms.TextInput(attrs={"class":'form-control regis-input', 'placeholder': '邮箱'}),
+	        'political_affiliation':forms.Select(attrs={'class':'form-control regis-input'}),
             'apartment':forms.Select(attrs={'class':'form-control regis-input', }),
             'college':forms.Select(attrs={'class':'form-control regis-input'}),
-			'wish_first':forms.Select(attrs={'class':'form-control regis-input'}),
+	        'wish_first':forms.Select(attrs={'class':'form-control regis-input'}),
             'wish_second':forms.Select(attrs={'class':'form-control regis-input'}),
             'ifAdujst':forms.Select(attrs={'class':'form-control regis-input','placeholder':'是否服从调剂'}),
             'self_introduction':forms.Textarea(attrs={'class':'form-control','placeholder':u"请做简单自我介绍，包括自己特长和参加科技竞赛获奖经历(300字以内)。"})
