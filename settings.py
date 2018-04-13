@@ -88,6 +88,9 @@ TEMPLATE_LOADERS = (
 )
 
 
+CAS_SERVER_URL = 'https://sso.dlut.edu.cn/cas'
+
+
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'backend.custom_middlewares.PreviousURLMiddleware',
@@ -96,7 +99,16 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+
+    'django_cas.middleware.CASMiddleware',
 )
+
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'django_cas.backends.CASBackend',
+)
+
 
 ROOT_URLCONF = 'urls'
 
