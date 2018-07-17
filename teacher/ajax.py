@@ -50,7 +50,7 @@ def getCourseMembers(request, course_id):
     if not any(filter(lambda x: x, rates)):
         return simplejson.dumps({"message": u"请先设置该门课程的系数比例",
                                  "status": '1'})
-    selects = SelectCourse.objects.filter(course__id=course_id)
+    selects = SelectCourse.objects.filter(course__id=course_id).order_by('student__baseinfo_studentid')
     for select in selects:
         tmp_score = Score.objects.filter(select_obj=select)
         if tmp_score:
