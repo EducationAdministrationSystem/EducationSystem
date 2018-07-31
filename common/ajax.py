@@ -176,7 +176,7 @@ def exportAll(request):
 @dajaxice_register
 def exportCourseScores(request, course_id):
     course = Course.objects.get(id = course_id)
-    selects = SelectCourse.objects.filter(course__id = course_id)
+    selects = SelectCourse.objects.filter(course__id=course_id).order_by('student__baseinfo_studentid')
     smallclass = course.course_id.course_practice.full_name
     classnum = course.course_id.course_plan_id
     coursename = course.course_id.course_name
