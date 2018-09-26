@@ -32,10 +32,12 @@ def getContext(request):
     practice = PracticeProfile.objects.all()
     adminSetting=AdminSetting.objects.all()[0]
     switch = not adminSetting.recruit_switch
+    disabled_class = [5, 6, 11, 13, 16, 19, 20, 21]
     context = {
             "form":form,
             "practice": practice,
-            "recruit_switch":switch
+            "recruit_switch":switch,
+            "disabled_class": disabled_class
         }
     return context
 

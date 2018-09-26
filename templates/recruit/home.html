@@ -63,7 +63,7 @@
                     {% for item in practice %}
         						{% if item.id == 2 %}
         						<option value="{{item.id}}">{{item}}（录取后分班）</option>
-                    {% elif item.id != 10 and item.id != 11 and item.id != 12 %}
+                    {% elif item.id not in disabled_class %}
                     <option value="{{item.id}}">{{item}}</option>
                     {% endif %}
                     {% endfor %}
@@ -78,7 +78,7 @@
                     {% for item in practice %}
         						{% if item.id == 2 %}
         						<option value="{{item.id}}">{{item}}（录取后分班）</option>
-                    {% elif item.id != 10 and item.id != 11 and item.id != 12 %}
+                    {% elif item.id not in disabled_class %}
                     <option value="{{item.id}}">{{item}}</option>
                     {% endif %}
                     {% endfor %}
@@ -98,7 +98,7 @@
           </div>
           <div style="height:100px;width:310px;margin:20px auto;">
               <img src="/media/images/chuangyuanwx.jpg" alt="" style="width:100px;height:100px;float:left;">
-              <p style="line-height:30px;padding-top:5px;">笔试，面试，选课等环节的通知，<br>请关注创新创业学院微信公众号<br>2017新生QQ群：654057715</p>
+              <p style="line-height:30px;padding-top:5px;">笔试，面试，选课等环节的通知，<br>请关注创新创业学院微信公众号<br>2018新生QQ群：894068296</p>
           </div>
           <div class="div-commit">
             <input class="btn btn-default btn-warning dialog-button" name="commit" type="submit" value="报名"></input>
