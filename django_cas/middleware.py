@@ -32,17 +32,17 @@ class CASMiddleware(object):
         logout.
         """
         if view_func == login:
-            # how to get the next query of the URL?
-            url = request.get_full_path()
-            qs = parse_qs(urlparse(url).query)
-            # print qs
-            # print "appended QUERY string:", request.GET.urlencode()
-            if REDIRECT_FIELD_NAME in qs:
-                # print qs
-                redirect = qs[REDIRECT_FIELD_NAME][0]
-                res = re.match(r"^/loginredirect/(?P<identity>\w+)/", redirect)
-                if res is not None and res.group('identity') == "student":
-                    return cas_login(request)
+            # # how to get the next query of the URL?
+            # url = request.get_full_path()
+            # qs = parse_qs(urlparse(url).query)
+            # # print qs
+            # # print "appended QUERY string:", request.GET.urlencode()
+            # if REDIRECT_FIELD_NAME in qs:
+            #     # print qs
+            #     redirect = qs[REDIRECT_FIELD_NAME][0]
+            #     res = re.match(r"^/loginredirect/(?P<identity>\w+)/", redirect)
+            #     if res is not None and res.group('identity') == "student":
+            #         return cas_login(request)
 
             return login(request, *view_args, **view_kwargs)
 
